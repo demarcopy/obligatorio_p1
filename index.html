@@ -11,17 +11,17 @@
     <title>Carreras Callejeras</title>
 </head>
 <body>
+    <h1 id="tituloPagina">Sitio de corredores</h1>
     <img src = "img/img1.jpg" alt="Banner corredor" height="300">
   <section>
     <h2>Datos</h2>
         <article>
             <h4>Carreras</h4>
         <!-- Form -->
-
         <form >
             <div>
                 <label for="nombreForm">Nombre:</label>
-                <input type="text" id="nombreForm" name="Nombre">
+                <input type="text" id="nombreForm" name="NombreCarrera">
             </div>
             <div>
                 <label for="departamentoForm">Departamento:</label>
@@ -54,15 +54,39 @@
                 <label for="cupoFormCarrera">Cupo</label>
                 <input type="number" id="cupoFormCarrera" name="cupo" min="1" max="1000" value="30">
             </div>
+            <button type="submit">Agregar Carrera</button>
         </form>   
         
         </article>
 
-
         <article>
             <h4>Patrocinadores</h4>
-        
-        
+            <form>
+                <div>
+                    <label for="nombrePatrocinadorForm">Nombre</label>
+                    <input type="text" id="nombreFormText" name="nombrePatrocinadores">
+                </div>
+                <div>
+                   <label for="rubroPatrocinadorForm">Rubro</label>
+                    <select>
+                        <option value="">Alimenticio</option>
+                        <option value="">Banco</option>
+                        <option value="">Bebidas</option>
+                        <option value="">Farmacia</option>
+                        <option value="">Ropa deportiva</option>
+                        <option value="">Estatal</option>
+                        <option value="">General</option>
+                    </select>
+
+                </div>
+                <div>
+                    <label for="listaPatrocinadores">Carreras</label>
+                    <input type="search">
+                </div>
+                <div>
+                    <button type="submit">Agregar/Actualizar Patrocinador</button>
+                </div>
+            </form>
 
         <!-- Form -->
         </article>
