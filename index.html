@@ -64,11 +64,11 @@
             <form>
                 <div>
                     <label for="nombrePatrocinadorForm">Nombre</label>
-                    <input type="text" id="nombreFormText" name="nombrePatrocinadores">
+                    <input type="text" id="nombrePatrocinadorForm" name="nombrePatrocinadores">
                 </div>
                 <div>
                    <label for="rubroPatrocinadorForm">Rubro</label>
-                    <select>
+                    <select id="rubroPatrocinadorForm">
                         <option value="">Alimenticio</option>
                         <option value="">Banco</option>
                         <option value="">Bebidas</option>
@@ -81,7 +81,7 @@
                 </div>
                 <div>
                     <label for="listaPatrocinadores">Carreras</label>
-                    <input type="search">
+                    <input type="search" id="listaPatrocinadores">
                 </div>
                 <div>
                     <button type="submit">Agregar/Actualizar Patrocinador</button>
@@ -94,15 +94,43 @@
         <article>
             <h4>Corredores</h4>
         <!-- Form -->
-
+                <div>
+                    <label for="nombreCorredores">Nombre</label>
+                    <input type="text" id="nombreCorredores">
+                </div>
+                <div>
+                    <label for="edadCorredores">Edad</label>
+                    <input type="text" id="edadCorredores">
+                </div>
+                <div>
+                    <label for="cedulaCorredores">Cedula</label>
+                    <input type="text" id="cedulaCorredores">
+                </div>
+                <div>
+                    <label for="vencFichaCorredor">Fecha de vencimiento de ficha medica:</label>
+                    <input type="date" id="vencFichaCorredor">
+                </div>
 
         </article>    
 
         <article>
             <h4>Inscripciones</h4>            
-        <!-- Form -->
-
-
+                <div>
+                    <label>Corredores</label>
+                    <select name="corredoresInscripcion" id="corredoresInscripcion">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Carreras</label>
+                    <select name="carrerasInscripcion" id="carrerasInscripcion">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                    </select>
+                </div>
+            <button type="submit">Inscribir</button>
         </article>
     </section>
 
@@ -111,8 +139,24 @@
 
         <article>
             <h4>Datos generales</h4>
-
-
+                <div>
+                    <p>Promedio de inscriptos por carrera: Sin datos</p>
+                </div>
+                <div>
+                    <p>Carrera/s con mas inscriptos:</p>
+                    <ul>
+                        <li id="carreraMasInscriptosLi">Sin Datos</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Carreras sin inscriptos ordenadas por fecha:</p>
+                    <ul>
+                        <li id="carreraSinInscriptosLi">Sin Datos</li>
+                    </ul>
+                </div>
+                <div>
+                    <p>Promedio de corredores de elite: Sin datos</p>
+                </div>                
         </article>
 
     
