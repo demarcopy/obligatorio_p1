@@ -162,15 +162,50 @@
     
         <article>     
             <h4>Consulta de inscriptos</h4>    
-            
-        
+            <div>
+                <label for="carreraConsultaInscriptos">Carrera</label>
+                <select id="carreraConsultaInscriptos">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                </select>
+            </div>
+            <div id="ordenarInscriptos">
+                <p>Ordenar por: </p>
+                <div id="ordenarInscriptosOpciones">
+                    <input type="radio" id="ordenacionConsultaNombre" name="orderInscriptos">
+                    <label for="ordenacionConsultaNombre">Nombre</label>
+                    <input type="radio" id="ordenacionConsultaNumero" name="orderInscriptos">
+                    <label for="ordenacionConsultaNumero">Numero</label>
+                </div>
+            </div>
+            <div>
+                <table border="1">
+                    <caption>Inscriptos</caption>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Cedula</th>
+                            <th>Ficha Médica</th>
+                            <th>Número</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </article>
 
 
         
         <article>
             <h4>Visualizar mapa</h4>  
-
+            <div>
+                <input type="radio" id="mapaOrdenCarrera" name="mapaOrden">
+                <label for="">Por Carreras</label>
+                <input type="radio" id="mapaOrdenInscripcion" name="mapaOrden">
+                <label for="">Por Inscripciones</label>
+            </div>
         </article>
 
     </section>

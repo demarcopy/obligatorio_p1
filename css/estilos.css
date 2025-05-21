@@ -8,3 +8,11 @@ article{
 background-color: #00FF84;
 }
 
+#ordenarInscriptos{
+      display: flex;
+      align-items:center;
+}
+
+#ordenarInscriptosOpciones{
+    margin-left: 10px;
+}
