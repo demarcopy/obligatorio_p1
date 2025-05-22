@@ -1,4 +1,22 @@
 /* Autores: Rodrigo Demarco, Nro 354653 - Bruno */
 h1 {
     color: red;
+
+
+section{
+background-color: #DEFEE0
+}
+
+article{
+background-color: #00FF84;
+}
+
+#ordenarInscriptos{
+      display: flex;
+      align-items:center;
+}
+
+#ordenarInscriptosOpciones  {
+    margin-left: 10px;
+
 }
