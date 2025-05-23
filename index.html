@@ -34,9 +34,11 @@
     <section>
     <h2>Datos</h2>
         <article>
+            <form action="#" method="get">
+            <fieldset>
             <h4>Carreras</h4>
         <!-- Form -->
-        <form >
+
             <div>
                 <label for="nombreForm">Nombre:</label>
                 <input type="text" id="nombreForm" name="NombreCarrera">
@@ -44,24 +46,25 @@
             <div>
                 <label for="departamentoForm">Departamento:</label>
                 <select id="departamentoForm" name="Departamento">
-                    <option value="">Artigas</option>
-                    <option value="">Canelones</option>
-                    <option value="">Cerro Largo</option>
-                    <option value="">Colonia</option>
-                    <option value="">Durazno</option>
-                    <option value="">Flores</option>
-                    <option value="">Florida</option>
-                    <option value="">Lavalleja</option>
-                    <option value="">Maldonado</option>
-                    <option value="">Paysandu</option>
-                    <option value="">Rio negro</option>
-                    <option value="">Rivera</option>
-                    <option value="">Rocha</option>
-                    <option value="">Salto</option>
-                    <option value="">San Jose</option>
-                    <option value="">Soriano</option>
-                    <option value="">Tacuarembo</option>
-                    <option value="">Treinta y Tres</option>
+                    <option value="artigas">Artigas</option>
+                    <option value="canelones">Canelones</option>
+                    <option value="cerroLargo">Cerro Largo</option>
+                    <option value="colonia">Colonia</option>
+                    <option value="durazno">Durazno</option>
+                    <option value="flores">Flores</option>
+                    <option value="florida">Florida</option>
+                    <option value="lavalleja">Lavalleja</option>
+                    <option value="maldonado">Maldonado</option>
+                    <option value="montevideo" selected>Montevideo</option>
+                    <option value="paysandu">Paysandu</option>
+                    <option value="rioNegro">Rio negro</option>
+                    <option value="rivera">Rivera</option>
+                    <option value="rocha">Rocha</option>
+                    <option value="salto">Salto</option>
+                    <option value="sanJose">San Jose</option>
+                    <option value="soriano">Soriano</option>
+                    <option value="tacuarembo">Tacuarembo</option>
+                    <option value="treintaYTres">Treinta y Tres</option>
                 </select>
             </div>
             <div>
@@ -72,14 +75,17 @@
                 <label for="cupoFormCarrera">Cupo</label>
                 <input type="number" id="cupoFormCarrera" name="cupo" min="1" max="1000" value="30">
             </div>
-            <button type="submit">Agregar Carrera</button>
+                <input type="button" id="btnCarrerasForm" value="Agregar Carrera">
+            </fieldset>
         </form>   
         
         </article>
 
         <article>
+            <form action="#" method="get">
+            <fieldset>
             <h4>Patrocinadores</h4>
-            <form>
+
                 <div>
                     <label for="nombrePatrocinadorForm">Nombre</label>
                     <input type="text" id="nombrePatrocinadorForm" name="nombrePatrocinadores">
@@ -102,14 +108,17 @@
                     <input type="search" id="listaPatrocinadores">
                 </div>
                 <div>
-                    <button type="submit">Agregar/Actualizar Patrocinador</button>
+                    <input type="button" id="btnPatrocinadoresForm" value="Agregar/Actualizar Patrocinador">
                 </div>
+                </fieldset>
             </form>
 
         <!-- Form -->
         </article>
 
         <article>
+            <form action="" method="get">
+                <fieldset>
             <h4>Corredores</h4>
         <!-- Form -->
                 <div>
@@ -136,10 +145,14 @@
                     <label for="tipoCorredorComun">Deportista común</label>
                     
                 </div>
-                <button type="submit">Agregar Corredor</button>
+                <input type="button" id="btnCorredoresForm" value="Agregar Corredor">
+                </fieldset>
+            </form>
         </article>    
 
         <article>
+            <form action="">
+                <fieldset>
             <h4>Inscripciones</h4>            
                 <div>
                     <label>Corredores</label>
@@ -156,8 +169,13 @@
                         <option value="">2</option>
                     </select>
                 </div>
-            <button type="submit">Inscribir</button>
+
+                <input type="button" id="btnInscripcionesForm" value="Inscribir">
+
+            </fieldset>
+            </form>
         </article>
+
     </section>
 
     <section>
@@ -182,7 +200,7 @@
                 </div>
                 <div>
                     <p>Promedio de corredores de elite: Sin datos</p>
-                </div>                
+                </div> 
         </article>
 
     
