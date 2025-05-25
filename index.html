@@ -19,21 +19,20 @@
     <title>Carreras Callejeras</title>
 </head>
 <body>
-
-
-    <h1>Carreras callejeras</h1>
-    <!--esto es una prube de push-->
+    <div id="almedio">
     <h1 id="tituloPagina">Sitio de corredores</h1>
     <img src = "img/img1.jpg" alt="Banner corredor" height="300" >
+    </div>
     <br>
-    <input type="button" value="Datos">
-    <input type="button" value="Estadisticas">
+     <button type="submit" value="Datos" href="#a2">Datos</button>
+     <a href="#a2" class="button-link"><button>Estadisticas</button></a>
     <section>
+
     <h2>Datos</h2>
-        <article>
+    <a href="#a1"></a>
+        <article> <!--articulo carreras-->
             <h4>Carreras</h4>
-        <!-- Form -->
-        <form>
+        <form id="formcarrera" action="#" method="get">
             <div>
                 <label for="nombreForm">Nombre:</label>
                 <input type="text" id="nombreForm" name="NombreCarrera">
@@ -41,24 +40,24 @@
             <div>
                 <label for="departamentoForm">Departamento:</label>
                 <select id="departamentoForm" name="Departamento">
-                    <option value="">Artigas</option>
-                    <option value="">Canelones</option>
-                    <option value="">Cerro Largo</option>
-                    <option value="">Colonia</option>
-                    <option value="">Durazno</option>
-                    <option value="">Flores</option>
-                    <option value="">Florida</option>
-                    <option value="">Lavalleja</option>
-                    <option value="">Maldonado</option>
-                    <option value="">Paysandu</option>
-                    <option value="">Rio negro</option>
-                    <option value="">Rivera</option>
-                    <option value="">Rocha</option>
-                    <option value="">Salto</option>
-                    <option value="">San Jose</option>
-                    <option value="">Soriano</option>
-                    <option value="">Tacuarembo</option>
-                    <option value="">Treinta y Tres</option>
+                    <option value="8">Artigas</option>
+                    <option value="2">Canelones</option>
+                    <option value="6">Cerro Largo</option>
+                    <option value="13">Colonia</option>
+                    <option value="18">Durazno</option>
+                    <option value="15">Flores</option>
+                    <option value="16">Florida</option>
+                    <option value="17">Lavalleja</option>
+                    <option value="3">Maldonado</option>
+                    <option value="10">Paysandu</option>
+                    <option value="11">Rio negro</option>
+                    <option value="7">Rivera</option>
+                    <option value="4">Rocha</option>
+                    <option value="9">Salto</option>
+                    <option value="14">San Jose</option>
+                    <option value="12">Soriano</option>
+                    <option value="19">Tacuarembo</option>
+                    <option value="5">Treinta y Tres</option>
                 </select>
             </div>
             <div>
@@ -74,9 +73,9 @@
         
         </article>
 
-        <article>
+        <article> <!--articulo patrocinadores-->
             <h4>Patrocinadores</h4>
-            <form>
+            <form id="formpatrocinadores" action="#" method="get">
                 <div>
                     <label for="nombrePatrocinadorForm">Nombre</label>
                     <input type="text" id="nombrePatrocinadorForm" name="nombrePatrocinadores">
@@ -95,8 +94,10 @@
 
                 </div>
                 <div>
-                    <label for="listaPatrocinadores">Carreras</label>
-                    <input type="search" id="listaPatrocinadores">
+                    <label for="listaPatrocinadores"> Carreras</label>
+                    <select>
+                    <!--<option>carrera 1</option>-->
+                    </select>
                 </div>
                 <div>
                     <button type="submit">Agregar/Actualizar Patrocinador</button>
@@ -106,16 +107,16 @@
         <!-- Form -->
         </article>
 
-        <article>
+        <article> <!--articulo corredores-->
             <h4>Corredores</h4>
-        <!-- Form -->
+         <form id="formcorredores" action="#" method="get">
                 <div>
                     <label for="nombreCorredores">Nombre</label>
                     <input type="text" id="nombreCorredores">
                 </div>
                 <div>
                     <label for="edadCorredores">Edad</label>
-                    <input type="text" id="edadCorredores">
+                    <input type="number" id="edadCorredores" min="18">
                 </div>
                 <div>
                     <label for="cedulaCorredores">Cedula</label>
@@ -123,21 +124,23 @@
                 </div>
                 <div>
                     <label for="vencFichaCorredor">Fecha de vencimiento de ficha medica:</label>
-                    <input type="date" id="vencFichaCorredor">
+                    <input type="date" id="vencFichaCorredor" >
                 </div>
                 <div>
                     <label>Tipo de corredor</label>
                     <input type="radio" id="tipoCorredorElite" name="tipoDeportista">
                     <label for="tipoCorredorForm">Deportista de Elite</label>
-                    <input type="radio" id="tipoCorredorComun" name="tipoDeportista">
+                    <input type="radio" id="tipoCorredorComun" name="tipoDeportista" checked>
                     <label for="tipoCorredorComun">Deportista común</label>
                     
                 </div>
                 <button type="submit">Agregar Corredor</button>
+                </form>
         </article>    
 
-        <article>
-            <h4>Inscripciones</h4>            
+        <article> <!--articulo inscripciones-->
+            <h4>Inscripciones</h4>
+                <form id="forminscripciones" action="#" method="get"></form>            
                 <div>
                     <label>Corredores</label>
                     <select name="corredoresInscripcion" id="corredoresInscripcion">
@@ -156,11 +159,11 @@
             <button type="submit">Inscribir</button>
         </article>
     </section>
-
+    <br>
     <section>
         <h2>Estadisticas</h2>
-
-        <article>
+        <a href="#a2"></a>
+        <article id="margenn">
             <h4>Datos generales</h4>
                 <div>
                     <p>Promedio de inscriptos por carrera: Sin datos</p>
@@ -214,7 +217,9 @@
                             <th>Número</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+
+                    </tbody>
                 </table>
             </div>
         </article>
@@ -225,19 +230,19 @@
             <h4>Visualizar mapa</h4>  
             <div>
                 <input type="radio" id="mapaOrdenCarrera" name="mapaOrden">
-                <label for="">Por Carreras</label>
+                <label for="mapaOrdenCarrera">Por Carreras</label>
                 <input type="radio" id="mapaOrdenInscripcion" name="mapaOrden">
-                <label for="">Por Inscripciones</label>
+                <label for="mapaOrdenInscripcion">Por Inscripciones</label>
             </div>
         </article>
-        <br>
-        <footer>
+                
+    </section>
+    <footer>
             <p>Programación 1 - Obligatorio 1er semestre 2025 - Autores:</p>
-            <p>Grupo Na1 - Rodrigo Demarco (nro) - <a href="">link</a></p>
-            <p>Grupo Na1 - Bruno Dorta (nro) - <a href="">link</a></p>
+            <p>Grupo Na1 - Rodrigo Demarco (nro) - <a href="https://www.ort.edu.uy/" target="_blank">link</a></p>
+            <p>Grupo Na1 - Bruno Dorta (nro) - <a href="https://www.ort.edu.uy/" target="_blank">link</a></p>
         </footer>
 
-    </section>
 
 
 
