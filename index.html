@@ -21,15 +21,18 @@
 <body>
     <div id="almedio">
     <h1 id="tituloPagina">Sitio de corredores</h1>
-    <img src = "img/img1.jpg" alt="Banner corredor" height="300" >
+    <img src = "img/img1.jpg" alt="Banner corredor" height="300"  >
     </div>
     <br>
-     <button type="submit" value="Datos" href="#a2">Datos</button>
-     <a href="#a2" class="button-link"><button>Estadisticas</button></a>
+    <a href="#a1">
+     <input type="button" id="irdatos" value="Datos">   
+    </a>
+    <a href="#a2">
+    <input type="button" id="irestadisticas" value="Estadisticas">
+    </a>
     <section>
-
-    <h2>Datos</h2>
-    <a href="#a1"></a>
+        <a id="a1"></a>
+        <h2>Datos</h2>
         <article> <!--articulo carreras-->
             <h4>Carreras</h4>
         <form id="formcarrera" action="#" method="get">
@@ -162,8 +165,9 @@
     <br>
     <section>
         <h2>Estadisticas</h2>
-        <a href="#a2"></a>
+        <a id="a2"></a>
         <article id="margenn">
+            
             <h4>Datos generales</h4>
                 <div>
                     <p>Promedio de inscriptos por carrera: Sin datos</p>

@@ -7,7 +7,7 @@ h1 {
 
 article{
 background-color: #00FF84;
-margin: 2%;
+
 padding: 10px;
 border-radius: 10px;
 
@@ -25,18 +25,20 @@ border-radius: 10px;
 
 }
 img {
-    left: 300px;
-    top: 100px;
+    content: normal;
+    
+    
     
 }
 footer {
    background-color: antiquewhite; 
    border-radius: 10px; 
+
 }
 section {
     background-color: rgb(150, 224, 150);
     background-size: 50% 40%;
-    padding: 1px;
+    padding: 1%;
     border-radius: 10px;
     
 }
@@ -45,5 +47,5 @@ section {
 }
 
 #almedio {
-    background-color: #00FF84;
+    text-align: center;
 }
