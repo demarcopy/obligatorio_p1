@@ -49,3 +49,9 @@ section {
 #almedio {
     text-align: center;
 }
+
+#tablaInscriptos, #tablaInscriptos th, #tablaInscriptos td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
