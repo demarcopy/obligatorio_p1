@@ -24,12 +24,8 @@ border-radius: 10px;
 
 
 }
-img {
-    content: normal;
-    
-    
-    
-}
+
+
 footer {
    background-color: antiquewhite; 
    border-radius: 10px; 
@@ -42,11 +38,8 @@ section {
     border-radius: 10px;
     
 }
-#margenn {
-    margin-bottom: auto;
-}
 
-#almedio {
+header {
     text-align: center;
 }
 
