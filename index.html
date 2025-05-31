@@ -2,19 +2,12 @@
 <!doctype html>
 <!-- Autores: Rodrigo Demarco, Nro 354653 - Bruno-->
 
-<!-- Autores: Rodrigo Demarco, Nro 354653 - Bruno-->
-<!--esto es un test de push-->
-
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Rodrigo">
     <meta name="author" content="Bruno">
-
-    <meta name="author" content="Rodrigo Demarco y Bruno Dorta">
-
     <link rel="stylesheet" href="css/estilos.css">
     <title>Carreras Callejeras</title>
 </head>
@@ -24,12 +17,9 @@
     <img src = "img/img1.jpg" alt="Banner corredor" height="300"  >
     </div>
     <br>
-    <a href="#a1">
-     <input type="button" id="irdatos" value="Datos">   
-    </a>
-    <a href="#a2">
-    <input type="button" id="irestadisticas" value="Estadisticas">
-    </a>
+    <a href="#a1"> <input type="button" id="irdatos" value="Datos">  </a> 
+    <a href="#a2"><input type="button" id="irestadisticas" value="Estadisticas"></a>
+    <br><br>
     <section>
         <a id="a1"></a>
         <h2>Datos</h2>
@@ -98,7 +88,7 @@
                 </div>
                 <div>
                     <label for="listaPatrocinadores"> Carreras</label>
-                    <select>
+                    <select id="listaPatrocinadores">
                     <!--<option>carrera 1</option>-->
                     </select>
                 </div>
@@ -132,7 +122,7 @@
                 <div>
                     <label>Tipo de corredor</label>
                     <input type="radio" id="tipoCorredorElite" name="tipoDeportista">
-                    <label for="tipoCorredorForm">Deportista de Elite</label>
+                    <label for="tipoCorredorElite">Deportista de élite</label>
                     <input type="radio" id="tipoCorredorComun" name="tipoDeportista" checked>
                     <label for="tipoCorredorComun">Deportista común</label>
                     
@@ -164,7 +154,7 @@
     </section>
     <br>
     <section>
-        <h2>Estadisticas</h2>
+        <h2>Estadísticas</h2>
         <a id="a2"></a>
         <article id="margenn">
             
@@ -173,19 +163,19 @@
                     <p>Promedio de inscriptos por carrera: Sin datos</p>
                 </div>
                 <div>
-                    <p>Carrera/s con mas inscriptos:</p>
+                    <p>Carrera/s con más inscriptos:</p>
                     <ul>
-                        <li id="carreraMasInscriptosLi">Sin Datos</li>
+                        <li id="carreraMasInscriptosLi">Sin datos</li>
                     </ul>
                 </div>
                 <div>
                     <p>Carreras sin inscriptos ordenadas por fecha:</p>
                     <ul>
-                        <li id="carreraSinInscriptosLi">Sin Datos</li>
+                        <li id="carreraSinInscriptosLi">Sin datos</li>
                     </ul>
                 </div>
                 <div>
-                    <p>Promedio de corredores de elite: Sin datos</p>
+                    <p>Promedio de corredores de élite: Sin datos</p>
                 </div>                
         </article>
 
@@ -206,17 +196,17 @@
                     <input type="radio" id="ordenacionConsultaNombre" name="orderInscriptos">
                     <label for="ordenacionConsultaNombre">Nombre</label>
                     <input type="radio" id="ordenacionConsultaNumero" name="orderInscriptos">
-                    <label for="ordenacionConsultaNumero">Numero</label>
+                    <label for="ordenacionConsultaNumero">Número</label>
                 </div>
             </div>
             <div>
-                <table border="1">
+                <table id="tablaInscriptos">
                     <caption>Inscriptos</caption>
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Edad</th>
-                            <th>Cedula</th>
+                            <th>Cédula</th>
                             <th>Ficha Médica</th>
                             <th>Número</th>
                         </tr>
