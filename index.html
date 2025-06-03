@@ -1,6 +1,5 @@
 <!doctype html>
 <!-- Autores: Rodrigo Demarco, Nro 354653 - Bruno-->
-
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -14,17 +13,18 @@
     <header>
         <h1 id="tituloPagina">Sitio de corredores</h1>
         <img src = "img/img1.jpg" alt="Banner corredor" height="300">
+        <button onclick="location.href = '#a1'">Datos</button>
+        <button onclick="location.href = '#a2'">Estadisticas</button>
     </header>
     <br>
-    <button onclick="location.href = '#a1'">Datos</button>
-    <button onclick="location.href = '#a2'">Estadisticas</button>
-    <br><br>
-    <section>
+    <br>
+    <br>
+    <section> <!--Seccion Datos-->
         <a id="a1"></a>
         <h2>Datos</h2>
         <article> <!--articulo carreras-->
             <h4>Carreras</h4>
-        <form id="formcarrera" action="#" method="get">
+            <form id="formcarrera" action="#" method="get">
             <div>
                 <label for="nombreForm">Nombre:</label>
                 <input type="text" id="nombreForm" name="NombreCarrera">
@@ -62,9 +62,7 @@
             </div>
             <button type="submit">Agregar Carrera</button>
         </form >   
-        
         </article>
-
         <article> <!--articulo patrocinadores-->
             <h4>Patrocinadores</h4>
             <form id="formpatrocinadores" action="#" method="get">
@@ -83,25 +81,21 @@
                         <option value="">Estatal</option>
                         <option value="">General</option>
                     </select>
-
                 </div>
                 <div>
                     <label for="listaPatrocinadores"> Carreras</label>
                     <select id="listaPatrocinadores">
-                    <!--<option>carrera 1</option>-->
+                        <!--<option>Carrera Ingresada 1</option>-->
                     </select>
                 </div>
                 <div>
                     <button type="submit">Agregar/Actualizar Patrocinador</button>
                 </div>
             </form>
-
-        <!-- Form -->
         </article>
-
         <article> <!--articulo corredores-->
             <h4>Corredores</h4>
-         <form id="formcorredores" action="#" method="get">
+            <form id="formcorredores" action="#" method="get">
                 <div>
                     <label for="nombreCorredores">Nombre</label>
                     <input type="text" id="nombreCorredores">
@@ -123,40 +117,38 @@
                     <input type="radio" id="tipoCorredorElite" name="tipoDeportista">
                     <label for="tipoCorredorElite">Deportista de élite</label>
                     <input type="radio" id="tipoCorredorComun" name="tipoDeportista" checked>
-                    <label for="tipoCorredorComun">Deportista común</label>
-                    
+                    <label for="tipoCorredorComun">Deportista común</label>        
                 </div>
                 <button type="submit">Agregar Corredor</button>
                 </form>
         </article>    
-
         <article> <!--articulo inscripciones-->
             <h4>Inscripciones</h4>
-                <form id="forminscripciones" action="#" method="get"></form>            
-                <div>
-                    <label>Corredores</label>
-                    <select name="corredoresInscripcion" id="corredoresInscripcion">
-                        <option value="" >1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                    </select>
-                </div>
-                <div>
-                    <label>Carreras</label>
-                    <select name="carrerasInscripcion" id="carrerasInscripcion">
-                        <option value="">1</option>
-                        <option value="">2</option>
-                    </select>
-                </div>
+            <form id="forminscripciones" action="#" method="get">           
+            <div>
+                <label>Corredores</label>
+                <select name="corredoresInscripcion" id="corredoresInscripcion">
+                    <option value="" >1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                </select>
+            </div>
+            <div>
+                <label>Carreras</label>
+                <select name="carrerasInscripcion" id="carrerasInscripcion">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                </select>
+            </div>
             <button type="submit">Inscribir</button>
+            </form>
         </article>
-    </section>
+    </section> <!--Seccion Estadisticas-->
     <br>
     <section>
         <h2>Estadísticas</h2>
         <a id="a2"></a>
-        <article>
-            
+        <article> <!--Articulo Datos Generales-->   
             <h4>Datos generales</h4>
                 <div>
                     <p>Promedio de inscriptos por carrera: Sin datos</p>
@@ -176,10 +168,8 @@
                 <div>
                     <p>Promedio de corredores de élite: Sin datos</p>
                 </div>                
-        </article>
-
-    
-        <article>     
+        </article>  
+        <article>  <!--Articulo Consulta de Inscriptos-->
             <h4>Consulta de inscriptos</h4>    
             <div>
                 <label for="carreraConsultaInscriptos">Carrera</label>
@@ -215,11 +205,8 @@
                     </tbody>
                 </table>
             </div>
-        </article>
-
-
-        
-        <article>
+        </article>     
+        <article>  <!--Articulo Mapa-->
             <h4>Visualizar mapa</h4>  
             <div>
                 <input type="radio" id="mapaOrdenCarrera" name="mapaOrden">
@@ -227,18 +214,12 @@
                 <input type="radio" id="mapaOrdenInscripcion" name="mapaOrden">
                 <label for="mapaOrdenInscripcion">Por Inscripciones</label>
             </div>
-        </article>
-                
+        </article>               
     </section>
-    <footer>
-            <p>Programación 1 - Obligatorio 1er semestre 2025 - Autores:</p>
-            <p>Grupo Na1 - Rodrigo Demarco (nro) - <a href="https://www.ort.edu.uy/" target="_blank">link</a></p>
-            <p>Grupo Na1 - Bruno Dorta (nro) - <a href="https://www.ort.edu.uy/" target="_blank">link</a></p>
-        </footer>
-
-
-
-
-
+    <footer> <!-- Footer Final-->
+        <p>Programación 1 - Obligatorio 1er semestre 2025 - Autores:</p>
+        <p>Grupo Na1 - Rodrigo Demarco (nro) - <a href="https://www.linkedin.com/in/rodrigo-demarco/" target="_blank">link</a></p>
+        <p>Grupo Na1 - Bruno Dorta (nro) - <a href="https://www.ort.edu.uy/" target="_blank">link</a></p>
+    </footer>
 </body>
 </html>
