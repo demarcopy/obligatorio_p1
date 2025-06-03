@@ -1,50 +1,34 @@
-/* Autores: Rodrigo Demarco, Nro 354653 - Bruno */
+/* Autores: Rodrigo Demarco, Nro 354653 - Bruno Dorta Nro 367324 */
 h1 {
     color: rgb(0, 0, 0);
-
-
 }
-
 article{
 background-color: #00FF84;
-
 padding: 10px;
 border-radius: 10px;
 margin: 5px;
-
 }
-
 #ordenarInscriptos{
       display: flex;
       align-items:center;
 }
-
 #ordenarInscriptosOpciones  {
     margin-left: 10px;
-
-
 }
-
-
 footer {
    background-color: antiquewhite; 
    border-radius: 10px; 
-
 }
 section {
     background-color: rgb(150, 224, 150);
     background-size: 50% 40%;
     padding: 1%;
     border-radius: 10px;
-    
 }
-
 header {
     text-align: center;
 }
-
 #tablaInscriptos, #tablaInscriptos th, #tablaInscriptos td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-
