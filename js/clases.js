@@ -1,6 +1,17 @@
 class Sistema {
     constructor(){
-
+        this.listaCarreras = new Array();
+        this.listaCorredores = new Array();
+        this.listaPatrocinadores = new Array();
+    }
+    agregarCarrera(nuevaCarrera){
+        this.listaCarreras.push(nuevaCarrera)
+        console.log('Pusheo carrera')
+    }
+    devuelveCarreras(){
+        console.log('devuelve carrera')
+        return this.listaCarreras
+        
     }
 }
 
@@ -11,6 +22,7 @@ class Carrera {
         this.fecha = fecha;
         this.cupo = cupo;
     }
+
 }
 
 class Corredor{
