@@ -13,6 +13,18 @@ class Sistema {
         return this.listaCarreras
         
     }
+    carreraYaExiste(nombreDeCarrera){
+        let existe = false;
+        let carrerasTotales = this.devuelveCarreras()
+        for (let carrera of carrerasTotales) {
+           if (carrera.nombre === nombreDeCarrera) {
+                existe = true;
+                break
+           } 
+        }
+    return existe
+
+    }
 }
 
 class Carrera {

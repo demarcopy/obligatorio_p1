@@ -13,7 +13,12 @@ function agregarCarrera() {
     let cupo = parseInt(document.getElementById('cupoFormCarrera').value)
     let nuevaCarrera = new Carrera(nombre,departamento,fecha,cupo)
     if (formCarrera.reportValidity()) {
-        sistema.agregarCarrera(nuevaCarrera)
+        if (sistema.carreraYaExiste(nuevaCarrera.nombre)) {
+            alert('La carrera ya fue ingresada')
+        }else{
+            sistema.agregarCarrera(nuevaCarrera)
+            formCarrera.reset()
+        }
     }else{
         alert('Faltan validaciones')
     }
