@@ -19,21 +19,22 @@ function agregarCarrera() {
         }else{
             sistema.agregarCarrera(nuevaCarrera)
             formCarrera.reset()
-            carreraEnPatrocinadores(nuevaCarrera.nombre)
+            carreraEnLista('listaPatrocinadores')
+            carreraEnLista('carrerasInscripcion')
         }
     }else{
         alert('Faltan validaciones')
     }
 }
 
-function carreraEnPatrocinadores(nombreCarrera) {
+function carreraEnLista(idElemento) {
     let carrerasTotales = sistema.devuelveCarreras()
-    let lista = document.getElementById('listaPatrocinadores')
-    lista.innerHTML = '';
-    for (carrera of carrerasTotales) {
+    let listaPatrocinadores = document.getElementById(idElemento)
+    listaPatrocinadores.innerHTML = '';
+    for (const carrera of carrerasTotales) {
         let elementoOption = document.createElement('option')
         let nodoNombreCarrera = document.createTextNode(carrera.nombre)
         elementoOption.appendChild(nodoNombreCarrera)
-        lista.appendChild(elementoOption)
+        listaPatrocinadores.appendChild(elementoOption)
     }
 }
