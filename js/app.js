@@ -2,6 +2,7 @@ window.addEventListener('load', inicio);
 function inicio() {
     document.getElementById('btnAgregarCarrera').addEventListener('click',agregarCarrera);
     document.getElementById('btnAgregarPatrocinador').addEventListener('click',agregarPatrocinador)
+    document.getElementById('btnAgregarCorredor').addEventListener('click',agregarCorredor);
 }
 
 let sistema = new Sistema();
@@ -49,20 +50,51 @@ function agregarPatrocinador() {
     let carreras = document.getElementById('listaCarrerasPatrocinador').value
     let formpatrocinadores = document.getElementById('formpatrocinadores');
     let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras)
-
     let totalPatrocinadores = sistema.devuelvePatrocinadores()
+    
     if (formpatrocinadores.reportValidity()) {
         if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
+
             alert('Patrocinador ya existe - Se actualizan datos')
             sistema.actualizarPatrocinador(nuevoPatrocinador)
+            formpatrocinadores.reset()
             console.log(totalPatrocinadores)
             alert('Patrocinador actualizado')
+            console.log(totalPatrocinadores)
         }else{      
-            sistema.agregarPatrocinador(nuevoPatrocinador)  
+            sistema.agregarPatrocinador(nuevoPatrocinador)
+            formpatrocinadores.reset()  
             alert('Patrocinador agregado') 
+            console.log(totalPatrocinadores)
         }
     }else{
         alert('Faltan validaciones')
     }
     
+}
+
+function agregarCorredor() {
+    let formCorredor = document.getElementById('formcorredores')
+    let nombre = document.getElementById('nombreCorredores').value
+    let edad = parseInt(document.getElementById('edadCorredores').value)
+    let cedula = document.getElementById('cedulaCorredores').value
+    let fechaVenciminento = document.getElementById('vencFichaCorredor').value
+    let tipo = document.querySelector('input[name="tipoDeportista"]:checked');
+    nombre = tipo.getAttribute('data-nombre');
+
+    console.log(tipo);
+
+    let nuevoCorredor = new Corredor(nombre,edad,cedula,fechaVenciminento,tipo)
+
+    if (formCorredor.reportValidity()) {
+        if (sistema.cedulaUnica(nuevoCorredor.cedula)) {
+            alert('El corredor ya existe')
+        }else{
+            sistema.agregarCorredor(nuevoCorredor)
+            formCorredor.reset()
+            alert('Corredor agregado')
+        }
+    }else{
+        alert('Faltan validaciones')
+    }
 }

@@ -53,6 +53,17 @@ class Sistema {
             }
         }
     }
+    cedulaUnica(cedulaCorredor){
+        let existe = false;
+        let corredoresTotales = this.listaCorredores;
+        for (const corredor of corredoresTotales) {
+            if (corredor.cedula === cedulaCorredor) {
+                existe = true;
+                break
+            } 
+        }
+        return existe
+    }
 }
 
 class Carrera {
