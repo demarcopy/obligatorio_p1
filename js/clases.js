@@ -53,6 +53,10 @@ class Sistema {
             }
         }
     }
+    agregarCorredor(nuevoCorredor){
+        this.listaCorredores.push(nuevoCorredor)
+        this.listaCorredores.sort((a,b) => {return a.nombre.localeCompare(b.nombre)})
+    }
     cedulaUnica(cedulaCorredor){
         let existe = false;
         let corredoresTotales = this.listaCorredores;
@@ -63,6 +67,9 @@ class Sistema {
             } 
         }
         return existe
+    }
+    devuelveCorredores(){
+        return this.listaCorredores
     }
 }
 

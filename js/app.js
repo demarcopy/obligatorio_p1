@@ -79,11 +79,7 @@ function agregarCorredor() {
     let edad = parseInt(document.getElementById('edadCorredores').value)
     let cedula = document.getElementById('cedulaCorredores').value
     let fechaVenciminento = document.getElementById('vencFichaCorredor').value
-    let tipo = document.querySelector('input[name="tipoDeportista"]:checked');
-    nombre = tipo.getAttribute('data-nombre');
-
-    console.log(tipo);
-
+    let tipo = document.querySelector('input[name="tipoDeportista"]:checked').value;
     let nuevoCorredor = new Corredor(nombre,edad,cedula,fechaVenciminento,tipo)
 
     if (formCorredor.reportValidity()) {
@@ -91,10 +87,25 @@ function agregarCorredor() {
             alert('El corredor ya existe')
         }else{
             sistema.agregarCorredor(nuevoCorredor)
+            corredorEnLista('corredoresInscripcion')
             formCorredor.reset()
             alert('Corredor agregado')
         }
     }else{
-        alert('Faltan validaciones')
+        alert('Datos Incorrectos')
+    }
+}
+
+function corredorEnLista(idElemento) {
+    let listaCorredores = document.getElementById(idElemento)
+
+    let totalCorredores = sistema.devuelveCorredores()
+    listaCorredores.innerHTML = '';
+    for (const corredor of totalCorredores) {
+        let resultado =  `${corredor.nombre} - ${corredor.cedula}`
+        let nodoOptionCorredor = document.createElement('option')
+        let nodoTextoCorredor = document.createTextNode(resultado)
+        nodoOptionCorredor.appendChild(nodoTextoCorredor)
+        listaCorredores.appendChild(nodoOptionCorredor)
     }
 }
