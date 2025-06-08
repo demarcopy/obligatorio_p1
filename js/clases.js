@@ -17,12 +17,32 @@ class Sistema {
     carreraYaExiste(nombreDeCarrera){
         let existe = false;
         let carrerasTotales = this.devuelveCarreras()
-        for (let carrera of carrerasTotales) {
-           if (carrera.nombre === nombreDeCarrera) {
+        for (const carrera of carrerasTotales) {
+            if (carrera.nombre === nombreDeCarrera) {
                 existe = true;
                 break
-           } 
+            } 
+            }
+        return existe
         }
+
+
+    agregarPatrocinador(nuevoPatrocinador){
+        this.listaPatrocinadores.push(nuevoPatrocinador)
+        console.log('Pusheo Patrocinador')
+    }
+    devuelvePatrocinadores(){
+        return this.listaPatrocinadores
+    }
+    patrocinadorYaExiste(nombrePatrocinador){
+    let existe = false;
+    let patrocinadoresTotales = this.devuelvePatrocinadores()
+    for (const patrocinador of patrocinadoresTotales) {
+        if (patrocinador.nombre === nombrePatrocinador) {
+            existe = true;
+            break
+        }
+    }
     return existe
     }
 }

@@ -1,6 +1,7 @@
 window.addEventListener('load', inicio);
 function inicio() {
     document.getElementById('btnAgregarCarrera').addEventListener('click',agregarCarrera);
+    document.getElementById('btnAgregarPatrocinador').addEventListener('click',agregarPatrocinador)
 }
 
 let sistema = new Sistema();
@@ -19,7 +20,7 @@ function agregarCarrera() {
         }else{
             sistema.agregarCarrera(nuevaCarrera)
             formCarrera.reset()
-            carreraEnLista('listaPatrocinadores')
+            carreraEnLista('listaCarrerasPatrocinador')
             carreraEnLista('carrerasInscripcion')
         }
     }else{
@@ -30,11 +31,26 @@ function agregarCarrera() {
 function carreraEnLista(idElemento) {
     let carrerasTotales = sistema.devuelveCarreras()
     let listaPatrocinadores = document.getElementById(idElemento)
-    listaPatrocinadores.innerHTML = '';
+    //listaPatrocinadores.innerHTML = '';
     for (const carrera of carrerasTotales) {
         let elementoOption = document.createElement('option')
         let nodoNombreCarrera = document.createTextNode(carrera.nombre)
         elementoOption.appendChild(nodoNombreCarrera)
         listaPatrocinadores.appendChild(elementoOption)
+    }
+}
+
+function agregarPatrocinador() {
+    let nombre = document.getElementById('nombrePatrocinadorForm').value;
+    let rubro = document.getElementById('rubroPatrocinador').value;
+    let carreras = document.getElementById('listaCarrerasPatrocinador').value
+
+    let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras)
+
+    if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
+        console.log('ya existe')
+    }else{
+        console.log('No existe')
+        sistema.agregarPatrocinador(nuevoPatrocinador)   
     }
 }
