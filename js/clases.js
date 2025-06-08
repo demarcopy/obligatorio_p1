@@ -57,7 +57,7 @@ class Sistema {
 
 class Carrera {
     constructor(nombre,departamento,fecha,cupo){
-        this.nombre = nombre;
+        this.nombre = nombre; 
         this.departamento = departamento;
         this.fecha = fecha;
         this.cupo = cupo;

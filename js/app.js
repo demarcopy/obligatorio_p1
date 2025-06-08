@@ -16,7 +16,7 @@ function agregarCarrera() {
     let nuevaCarrera = new Carrera(nombre,departamento,fecha,cupo)
     //Diria de validar tambien que la fecha sea mayor a la actual.
     
-    if (formCarrera.reportValidity()) {
+    if (formCarrera.checkValidity()) {
         
         if (sistema.carreraYaExiste(nuevaCarrera.nombre)) {
             alert('La carrera ya fue ingresada')
@@ -47,18 +47,22 @@ function agregarPatrocinador() {
     let nombre = document.getElementById('nombrePatrocinadorForm').value;
     let rubro = document.getElementById('rubroPatrocinador').value;
     let carreras = document.getElementById('listaCarrerasPatrocinador').value
-
+    let formpatrocinadores = document.getElementById('formpatrocinadores');
     let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras)
 
     let totalPatrocinadores = sistema.devuelvePatrocinadores()
-
-    if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
-        alert('Patrocinador ya existe - Se actualizan datos')
-        sistema.actualizarPatrocinador(nuevoPatrocinador)
-        console.log(totalPatrocinadores)
-        alert('Patrocinador actualizado')
-    }else{      
-        sistema.agregarPatrocinador(nuevoPatrocinador)  
-        alert('Patrocinador agregado') 
+    if (formpatrocinadores.reportValidity()) {
+        if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
+            alert('Patrocinador ya existe - Se actualizan datos')
+            sistema.actualizarPatrocinador(nuevoPatrocinador)
+            console.log(totalPatrocinadores)
+            alert('Patrocinador actualizado')
+        }else{      
+            sistema.agregarPatrocinador(nuevoPatrocinador)  
+            alert('Patrocinador agregado') 
+        }
+    }else{
+        alert('Faltan validaciones')
     }
+    
 }
