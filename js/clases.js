@@ -7,6 +7,7 @@ class Sistema {
     agregarCarrera(nuevaCarrera){
         this.listaCarreras.push(nuevaCarrera)
         console.log('Pusheo carrera')
+        this.listaCarreras.sort((a,b) => {return a.nombre.localeCompare(b.nombre)})
     }
     devuelveCarreras(){
         console.log('devuelve carrera')
@@ -23,7 +24,6 @@ class Sistema {
            } 
         }
     return existe
-
     }
 }
 
