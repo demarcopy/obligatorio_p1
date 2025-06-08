@@ -22,11 +22,9 @@ class Sistema {
                 existe = true;
                 break
             } 
-            }
-        return existe
         }
-
-
+        return existe
+    }
     agregarPatrocinador(nuevoPatrocinador){
         this.listaPatrocinadores.push(nuevoPatrocinador)
         console.log('Pusheo Patrocinador')
@@ -64,7 +62,6 @@ class Carrera {
         this.fecha = fecha;
         this.cupo = cupo;
     }
-
 }
 
 class Corredor{

@@ -12,9 +12,12 @@ function agregarCarrera() {
     let departamento = document.getElementById('departamentoCarrera').value
     let fecha = document.getElementById('carreraDateForm').value
     let cupo = parseInt(document.getElementById('cupoFormCarrera').value)
+
     let nuevaCarrera = new Carrera(nombre,departamento,fecha,cupo)
     //Diria de validar tambien que la fecha sea mayor a la actual.
+    
     if (formCarrera.reportValidity()) {
+        
         if (sistema.carreraYaExiste(nuevaCarrera.nombre)) {
             alert('La carrera ya fue ingresada')
         }else{
