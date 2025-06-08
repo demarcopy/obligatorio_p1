@@ -31,7 +31,7 @@ function agregarCarrera() {
 function carreraEnLista(idElemento) {
     let carrerasTotales = sistema.devuelveCarreras()
     let listaPatrocinadores = document.getElementById(idElemento)
-    //listaPatrocinadores.innerHTML = '';
+    listaPatrocinadores.innerHTML = '';
     for (const carrera of carrerasTotales) {
         let elementoOption = document.createElement('option')
         let nodoNombreCarrera = document.createTextNode(carrera.nombre)
@@ -47,10 +47,15 @@ function agregarPatrocinador() {
 
     let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras)
 
+    let totalPatrocinadores = sistema.devuelvePatrocinadores()
+
     if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
-        console.log('ya existe')
-    }else{
-        console.log('No existe')
-        sistema.agregarPatrocinador(nuevoPatrocinador)   
+        alert('Patrocinador ya existe - Se actualizan datos')
+        sistema.actualizarPatrocinador(nuevoPatrocinador)
+        console.log(totalPatrocinadores)
+        alert('Patrocinador actualizado')
+    }else{      
+        sistema.agregarPatrocinador(nuevoPatrocinador)  
+        alert('Patrocinador agregado') 
     }
 }

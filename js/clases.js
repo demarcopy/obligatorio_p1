@@ -45,6 +45,16 @@ class Sistema {
     }
     return existe
     }
+    actualizarPatrocinador(nuevoPatrocinador){
+        let patrocinadoresTotales = this.devuelvePatrocinadores()
+        for (const patrocinador of patrocinadoresTotales) {
+            if (patrocinador.nombre === nuevoPatrocinador.nombre) {
+                patrocinador.rubro = nuevoPatrocinador.rubro;
+                patrocinador.carrera = nuevoPatrocinador.carrera
+                break
+            }
+        }
+    }
 }
 
 class Carrera {
