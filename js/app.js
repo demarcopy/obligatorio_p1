@@ -1,8 +1,17 @@
 window.addEventListener('load', inicio);
 function inicio() {
-    document.getElementById('btnAgregarCarrera').addEventListener('click',agregarCarrera);
-    document.getElementById('btnAgregarPatrocinador').addEventListener('click',agregarPatrocinador)
-    document.getElementById('btnAgregarCorredor').addEventListener('click',agregarCorredor);
+    document.getElementById('formcarrera').addEventListener('submit',function (e){
+        e.preventDefault();
+        agregarCarrera();
+    });
+    document.getElementById('formpatrocinadores').addEventListener('submit',function (e){
+        e.preventDefault();
+        agregarPatrocinador();
+    });
+    document.getElementById('formcorredores').addEventListener('submit',function (e){
+        e.preventDefault();
+        agregarCorredor();
+    }); 
 }
 
 let sistema = new Sistema();
