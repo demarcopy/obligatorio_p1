@@ -12,6 +12,10 @@ function inicio() {
         e.preventDefault();
         agregarCorredor();
     }); 
+    document.getElementById('forminscripciones').addEventListener('submit', function (e){
+        e.preventDefault();
+        inscribirCorredor();
+    }); 
 }
 
 let sistema = new Sistema();
@@ -107,14 +111,32 @@ function agregarCorredor() {
 
 function corredorEnLista(idElemento) {
     let listaCorredores = document.getElementById(idElemento)
-
     let totalCorredores = sistema.devuelveCorredores()
     listaCorredores.innerHTML = '';
     for (const corredor of totalCorredores) {
         let resultado =  `${corredor.nombre} - ${corredor.cedula}`
+        let value = corredor.cedula;
         let nodoOptionCorredor = document.createElement('option')
+        nodoOptionCorredor.value = value;
         let nodoTextoCorredor = document.createTextNode(resultado)
         nodoOptionCorredor.appendChild(nodoTextoCorredor)
         listaCorredores.appendChild(nodoOptionCorredor)
+    }
+}
+
+function inscribirCorredor() {
+    let cedulaCorredor = document.getElementById('corredoresInscripcion').value
+    let nombreCarrera = document.getElementById('carrerasInscripcion').value
+    let corredor = sistema.buscarCorredor('Corredores',cedulaCorredor)
+    let carrera = sistema.buscarCorredor('Carrera',nombreCarrera)
+    if (corredor.vencFichaMedica < carrera.fecha) {
+        alert('Inscripcion no es posible, la ficha medica vencio')    
+    }else{
+        if (carrera.cupo === 0) {
+            alert('Inscripcion no es posible, no hay cupos en la carrera')
+        }else{
+            sistema.bajarCupo(carrera.nombre)   
+            //Se descarga PDF
+        }
     }
 }

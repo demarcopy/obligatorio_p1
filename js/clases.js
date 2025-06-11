@@ -71,6 +71,17 @@ class Sistema {
     devuelveCorredores(){
         return this.listaCorredores
     }
+    buscarCorredor(lista, elemento) {
+        if (lista === 'Corredores') {
+            return this.listaCorredores.find(corredor => corredor.cedula === elemento) || null;
+        }else{
+            return this.listaCarreras.find(carrera => carrera.nombre === elemento) || null;
+        }
+    }
+    bajarCupo(nombreCarrera){
+        let indice = this.listaCarreras.findIndex(c => c.nombre === nombreCarrera);
+        this.listaCarreras[indice].cupo = this.listaCarreras[indice].cupo  -1
+    }
 }
 
 class Carrera {
