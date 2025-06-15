@@ -98,32 +98,26 @@ class Sistema {
     }
     CarreraConMasInscriptos() {
     let max=0;
-    let resultado = '';   
+    let resultado = [];   
         for (let i=0; i <= this.listaInscripciones.length-1 ; i++) {
             let nombreCarrera = this.listaInscripciones[i].carrera.nombre
             let sumaInscriptos = 0;
-
             for (let j = 0; j <= this.listaInscripciones.length-1; j++) {
                 if (this.listaInscripciones[j].carrera.nombre === nombreCarrera) {
                     sumaInscriptos ++
-                    console.log(sumaInscriptos)
-
                 }
             }   
-
-            console.log(sumaInscriptos + 'test')
-
-            if (sumaInscriptos >= max) {
-                if (sumaInscriptos = max) {
+            if (sumaInscriptos > max) {
+                if (sumaInscriptos == max && !resultado.includes(nombreCarrera)) {
                     resultado = resultado + ' ' + nombreCarrera
                     max = sumaInscriptos                    
                 }else{
                     resultado = nombreCarrera
                     max = sumaInscriptos
                 }
-            }
-            
+            }        
         }   
+        console.log(resultado)  
         console.log(`${resultado} y ${max} `)  
     }
  
