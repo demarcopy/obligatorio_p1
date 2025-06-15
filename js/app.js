@@ -127,8 +127,8 @@ function corredorEnLista(idElemento) {
 function inscribirCorredor() {
     let cedulaCorredor = document.getElementById('corredoresInscripcion').value
     let nombreCarrera = document.getElementById('carrerasInscripcion').value
-    let corredor = sistema.buscarCorredor('Corredores',cedulaCorredor)
-    let carrera = sistema.buscarCorredor('Carrera',nombreCarrera)
+    let corredor = sistema.buscarDatoInscripcion('Corredores',cedulaCorredor)
+    let carrera = sistema.buscarDatoInscripcion('Carrera',nombreCarrera)
     if (corredor.vencFichaMedica < carrera.fecha) {
         alert('Inscripcion no es posible, la ficha medica vencio')    
     }else{
@@ -138,6 +138,8 @@ function inscribirCorredor() {
             let nuevaInscripcion = new Inscripcion(corredor,carrera)
             sistema.agregarInscripcion(nuevaInscripcion);   
             //Se descarga PDF
+            
+            sistema.CarreraConMasInscriptos()
         }
     }
 }

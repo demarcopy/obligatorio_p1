@@ -72,7 +72,7 @@ class Sistema {
     devuelveCorredores(){
         return this.listaCorredores
     }
-    buscarCorredor(lista, elemento) {
+    buscarDatoInscripcion(lista, elemento) {
         if (lista === 'Corredores') {
             return this.listaCorredores.find(corredor => corredor.cedula === elemento) || null;
         }else{
@@ -97,22 +97,48 @@ class Sistema {
         return (totalInscripciones / totalCarreras).toFixed(2);
     }
     CarreraConMasInscriptos() {
-        var max=0;
-        let resultado = '';
-    for (i=0;this.listaInscripciones.length;i++) {
-        for () {
+    let max=0;
+    let resultado = '';   
+        for (let i=0; i <= this.listaInscripciones.length-1 ; i++) {
+            let nombreCarrera = this.listaInscripciones[i].carrera.nombre
+            let sumaInscriptos = 0;
 
-        }
-       
+            for (let j = 0; j <= this.listaInscripciones.length-1; j++) {
+                if (this.listaInscripciones[j].carrera.nombre === nombreCarrera) {
+                    sumaInscriptos ++
+                    console.log(sumaInscriptos)
+
+                }
+            }   
+
+            console.log(sumaInscriptos + 'test')
+
+            if (sumaInscriptos >= max) {
+                if (sumaInscriptos = max) {
+                    resultado = resultado + ' ' + nombreCarrera
+                    max = sumaInscriptos                    
+                }else{
+                    resultado = nombreCarrera
+                    max = sumaInscriptos
+                }
+            }
+            
+        }   
+        console.log(`${resultado} y ${max} `)  
+    }
+ 
+}
+/*       
     }
     }
     listaDeCarrerasSinInscriptos() { //ordenados por fecha creciente
 
     }
     porcentajeElite() { 
-
+   
     }
-}
+ */
+
 
 class Carrera {
     constructor(nombre,departamento,fecha,cupo){
