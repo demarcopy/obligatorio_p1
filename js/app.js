@@ -60,7 +60,8 @@ function carreraEnLista(idElemento) {
 function agregarPatrocinador() {
     let nombre = document.getElementById('nombrePatrocinadorForm').value;
     let rubro = document.getElementById('rubroPatrocinador').value;
-    let carreras = document.getElementById('listaCarrerasPatrocinador').value
+    let elementoCarreras = document.getElementById('listaCarrerasPatrocinador');
+    let carreras = Array.from(elementoCarreras.selectedOptions).map(option => option.value);
     let formpatrocinadores = document.getElementById('formpatrocinadores');
     let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras)
     let totalPatrocinadores = sistema.devuelvePatrocinadores()
@@ -82,8 +83,7 @@ function agregarPatrocinador() {
         }
     }else{
         alert('Faltan validaciones')
-    }
-    
+    }  
 }
 
 function agregarCorredor() {
