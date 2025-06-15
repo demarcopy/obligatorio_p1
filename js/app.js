@@ -7,6 +7,7 @@ function inicio() {
     document.getElementById('formpatrocinadores').addEventListener('submit',function (e){
         e.preventDefault();
         agregarPatrocinador();
+        sistema.CarreraConMasInscriptos();
     });
     document.getElementById('formcorredores').addEventListener('submit',function (e){
         e.preventDefault();
@@ -16,7 +17,9 @@ function inicio() {
         e.preventDefault();
         inscribirCorredor();
     }); 
+
 }
+
 
 let sistema = new Sistema();
 
@@ -124,6 +127,7 @@ function corredorEnLista(idElemento) {
     }
 }
 
+
 function inscribirCorredor() {
     let cedulaCorredor = document.getElementById('corredoresInscripcion').value
     let nombreCarrera = document.getElementById('carrerasInscripcion').value
@@ -139,7 +143,7 @@ function inscribirCorredor() {
             sistema.agregarInscripcion(nuevaInscripcion);   
             //Se descarga PDF
             
-            sistema.CarreraConMasInscriptos()
+            //sistema.CarreraConMasInscriptos()
         }
     }
 }

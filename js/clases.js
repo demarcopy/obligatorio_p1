@@ -84,9 +84,15 @@ class Sistema {
         this.listaCarreras[indice].cupo = this.listaCarreras[indice].cupo  -1
     }
     agregarInscripcion(nuevaInscripcion){
-        this.listaInscripciones.push(nuevaInscripcion);
-        //console.log('Pusheo Inscripcion');
-        this.bajarCupo(nuevaInscripcion.carrera.nombre)
+        if(!this.listaInscripciones.some(duplicado=>
+            duplicado.carrera.nombre===nuevaInscripcion.carrera.nombre && duplicado.corredor===nuevaInscripcion.corredor
+        )) {
+            this.listaInscripciones.push(nuevaInscripcion);
+            //console.log('Pusheo Inscripcion');
+            this.bajarCupo(nuevaInscripcion.carrera.nombre)
+            console.log(this.listaInscripciones);
+            }
+
     }
     promInscripcionesPorCarrera(){
         let totalInscripciones = this.listaInscripciones.length;
@@ -96,31 +102,37 @@ class Sistema {
         }
         return (totalInscripciones / totalCarreras).toFixed(2);
     }
-    CarreraConMasInscriptos() {
+    CarreraConMasInscriptos() { //CREAR OBJETO CON NOMBRE DE CARRERA Y CANTIDAD DE INSCRIPTOS RESPECTIVAMENTE
     let max=0;
-    let resultado = [];   
+    let resultado = '';   
+    console.log('test');
         for (let i=0; i <= this.listaInscripciones.length-1 ; i++) {
             let nombreCarrera = this.listaInscripciones[i].carrera.nombre
             let sumaInscriptos = 0;
+            let 
+
             for (let j = 0; j <= this.listaInscripciones.length-1; j++) {
                 if (this.listaInscripciones[j].carrera.nombre === nombreCarrera) {
                     sumaInscriptos ++
                 }
-            }   
-            if (sumaInscriptos > max) {
-                if (sumaInscriptos == max && !resultado.includes(nombreCarrera)) {
-                    resultado = resultado + ' ' + nombreCarrera
-                    max = sumaInscriptos                    
-                }else{
-                    resultado = nombreCarrera
-                    max = sumaInscriptos
-                }
-            }        
-        }   
-        console.log(resultado)  
-        console.log(`${resultado} y ${max} `)  
-    }
+
+            
+            }
+           
+            if (sumaInscriptos >= max) {
+                    if (sumaInscriptos == max && (nombreCarrera!=resultado)) {
+                        
+                        resultado = resultado + ' ' + nombreCarrera
+                        max = sumaInscriptos                    
+                    }else{
+                        resultado = nombreCarrera
+                        max = sumaInscriptos
+                    }
+            }  
+        }
+    console.log(`${resultado} y ${max} `) 
  
+    }
 }
 /*       
     }
