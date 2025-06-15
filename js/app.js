@@ -135,7 +135,8 @@ function inscribirCorredor() {
         if (carrera.cupo === 0) {
             alert('Inscripcion no es posible, no hay cupos en la carrera')
         }else{
-            sistema.bajarCupo(carrera.nombre)   
+            let nuevaInscripcion = new Inscripcion(corredor,carrera)
+            sistema.agregarInscripcion(nuevaInscripcion);   
             //Se descarga PDF
         }
     }

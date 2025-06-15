@@ -3,6 +3,7 @@ class Sistema {
         this.listaCarreras = new Array();
         this.listaCorredores = new Array();
         this.listaPatrocinadores = new Array();
+        this.listaInscripciones = new Array();
     }
     agregarCarrera(nuevaCarrera){
         this.listaCarreras.push(nuevaCarrera)
@@ -81,6 +82,35 @@ class Sistema {
     bajarCupo(nombreCarrera){
         let indice = this.listaCarreras.findIndex(c => c.nombre === nombreCarrera);
         this.listaCarreras[indice].cupo = this.listaCarreras[indice].cupo  -1
+    }
+    agregarInscripcion(nuevaInscripcion){
+        this.listaInscripciones.push(nuevaInscripcion);
+        //console.log('Pusheo Inscripcion');
+        this.bajarCupo(nuevaInscripcion.carrera.nombre)
+    }
+    promInscripcionesPorCarrera(){
+        let totalInscripciones = this.listaInscripciones.length;
+        let totalCarreras = this.listaCarreras.length;
+        if (totalCarreras === 0) {
+            return 0; 
+        }
+        return (totalInscripciones / totalCarreras).toFixed(2);
+    }
+    CarreraConMasInscriptos() {
+        var max=0;
+        let resultado = '';
+    for (i=0;this.listaInscripciones.length;i++) {
+        for () {
+
+        }
+       
+    }
+    }
+    listaDeCarrerasSinInscriptos() { //ordenados por fecha creciente
+
+    }
+    porcentajeElite() { 
+
     }
 }
 
