@@ -143,7 +143,7 @@ function inscribirCorredor() {
             sistema.agregarInscripcion(nuevaInscripcion);   
             //Se descarga PDF
             
-            //sistema.CarreraConMasInscriptos()
+            //sistema.CarreraConMasInscriptos()ssss
         }
     }
 }

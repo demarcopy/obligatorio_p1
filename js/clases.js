@@ -140,7 +140,7 @@ class Sistema {
     listaDeCarrerasSinInscriptos() { //ordenados por fecha creciente
 
     }
-    porcentajeElite() { 
+    porcentajeElite(s) { 
    
     }
  */
