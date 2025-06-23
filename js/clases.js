@@ -102,14 +102,14 @@ class Sistema {
         }
         return (totalInscripciones / totalCarreras).toFixed(2);
     }
-    CarreraConMasInscriptos() { //CREAR OBJETO CON NOMBRE DE CARRERA Y CANTIDAD DE INSCRIPTOS RESPECTIVAMENTE
+    CarreraConMas() { 
     let max=0;
-    let resultado = '';   
+    let resultado = '';
     console.log('test');
         for (let i=0; i <= this.listaInscripciones.length-1 ; i++) {
             let nombreCarrera = this.listaInscripciones[i].carrera.nombre
             let sumaInscriptos = 0;
-            let 
+             
 
             for (let j = 0; j <= this.listaInscripciones.length-1; j++) {
                 if (this.listaInscripciones[j].carrera.nombre === nombreCarrera) {
@@ -120,18 +120,32 @@ class Sistema {
             }
            
             if (sumaInscriptos >= max) {
-                    if (sumaInscriptos == max && (nombreCarrera!=resultado)) {
+                    if ((!resultado.includes(nombreCarrera))) {
                         
-                        resultado = resultado + ' ' + nombreCarrera
-                        max = sumaInscriptos                    
-                    }else{
-                        resultado = nombreCarrera
-                        max = sumaInscriptos
+                        resultado = resultado + ' ' + nombreCarrera;
+                        max = sumaInscriptos;                 
+                    }else {
+                        resultado=nombreCarrera;
                     }
             }  
         }
-    console.log(`${resultado} y ${max} `) 
+    console.log(`${resultado} y ${max} `)
  
+    }//agregar return 
+    CarreraSinInscriptos() {
+        let sinInscriptos=[];
+        for(let i=0;i<= this.listaCarreras.length-1; i++) {
+            let nombreCarrera=this.listaCarreras[i].nombre;
+            let suma=0;
+            for(let j=0; j<=this.listaInscripciones.length-1;j++) {
+                if(this.listaInscripciones[j].carrera.nombre==nombreCarrera) {
+                    suma++
+                }
+            }
+        if(suma===0) {
+            sinInscriptos.push(nombreCarrera);
+        }
+        }
     }
 }
 /*       

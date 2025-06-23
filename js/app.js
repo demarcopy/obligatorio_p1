@@ -7,7 +7,7 @@ function inicio() {
     document.getElementById('formpatrocinadores').addEventListener('submit',function (e){
         e.preventDefault();
         agregarPatrocinador();
-        sistema.CarreraConMasInscriptos();
+        sistema.CarreraConMas();
     });
     document.getElementById('formcorredores').addEventListener('submit',function (e){
         e.preventDefault();
