@@ -103,35 +103,36 @@ class Sistema {
         return (totalInscripciones / totalCarreras).toFixed(2);
     }
     CarreraConMas() { 
-    let max=0;
-    let resultado = '';
-    console.log('test');
-        for (let i=0; i <= this.listaInscripciones.length-1 ; i++) {
-            let nombreCarrera = this.listaInscripciones[i].carrera.nombre
-            let sumaInscriptos = 0;
-             
+    const auxArray = []; 
+    const cantInscriptosArray = [];
 
-            for (let j = 0; j <= this.listaInscripciones.length-1; j++) {
-                if (this.listaInscripciones[j].carrera.nombre === nombreCarrera) {
-                    sumaInscriptos ++
-                }
-
-            
-            }
-           
-            if (sumaInscriptos >= max) {
-                    if ((!resultado.includes(nombreCarrera))) {
-                        
-                        resultado = resultado + ' ' + nombreCarrera;
-                        max = sumaInscriptos;                 
-                    }else {
-                        resultado=nombreCarrera;
-                    }
-            }  
+    for (let i = 0; i < this.listaInscripciones.length; i++) {
+        const nombreCarrera = this.listaInscripciones[i].carrera.nombre;
+        const index = auxArray.indexOf(nombreCarrera);
+        if (index === -1) {
+            auxArray.push(nombreCarrera); 
+            cantInscriptosArray.push(1); 
+        } else {
+            cantInscriptosArray[index]++;
         }
-    console.log(`${resultado} y ${max} `)
- 
-    }//agregar return 
+    }
+    let maximo = 0;
+    for (let i = 0; i < cantInscriptosArray.length; i++) {
+        if (cantInscriptosArray[i] > maximo) {
+            maximo = cantInscriptosArray[i];
+        }
+    }
+    
+    let resultado = '';
+    cantInscriptosArray.forEach((cantidad, i) => {
+        if (cantidad === maximo) {
+            resultado += auxArray[i] + ' ';
+        }
+    });
+
+    console.log("Las carreras con más inscriptos son: " + resultado);
+    console.log("Cantidad de inscriptos: " + maximo);
+    }
     CarreraSinInscriptos() {
         let sinInscriptos=[];
         for(let i=0;i<= this.listaCarreras.length-1; i++) {
