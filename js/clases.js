@@ -7,11 +7,9 @@ class Sistema {
     }
     agregarCarrera(nuevaCarrera){
         this.listaCarreras.push(nuevaCarrera)
-        console.log('Pusheo carrera')
         this.listaCarreras.sort((a,b) => {return a.nombre.localeCompare(b.nombre)})
     }
     devuelveCarreras(){
-        console.log('devuelve carrera')
         return this.listaCarreras
         
     }
@@ -28,7 +26,6 @@ class Sistema {
     }
     agregarPatrocinador(nuevoPatrocinador){
         this.listaPatrocinadores.push(nuevoPatrocinador)
-        console.log('Pusheo Patrocinador')
     }
     devuelvePatrocinadores(){
         return this.listaPatrocinadores
@@ -105,6 +102,7 @@ class Sistema {
     CarreraConMas() { 
     const auxArray = []; 
     const cantInscriptosArray = [];
+    const carrerasMasInscriptos = [];
 
     for (let i = 0; i < this.listaInscripciones.length; i++) {
         const nombreCarrera = this.listaInscripciones[i].carrera.nombre;
@@ -114,12 +112,15 @@ class Sistema {
             cantInscriptosArray.push(1); 
         } else {
             cantInscriptosArray[index]++;
+            console.log(cantInscriptosArray);
+            console.log(auxArray);
         }
     }
     let maximo = 0;
     for (let i = 0; i < cantInscriptosArray.length; i++) {
         if (cantInscriptosArray[i] > maximo) {
             maximo = cantInscriptosArray[i];
+            console.log(maximo);
         }
     }   
     let resultado = '';
@@ -129,8 +130,10 @@ class Sistema {
         }
     });
 
-    console.log("Las carreras con más inscriptos son: " + resultado);
-    console.log("Cantidad de inscriptos: " + maximo);
+
+    carrerasMasInscriptos.push( `Las carreras con más inscriptos son: ${resultado}`)
+    carrerasMasInscriptos.push( `Cantidad de inscriptos:${maximo}`)
+    return carrerasMasInscriptos
     }
     CarreraSinInscriptos() {
         let sinInscriptos=[];
@@ -148,7 +151,6 @@ class Sistema {
             }
         }
         resultado = sinInscriptos.sort((a,b) => a.ordenarCreciente(b))
-        console.log(resultado)
         return resultado
     }
     porcentajeElite() { 
@@ -160,8 +162,7 @@ class Sistema {
             }
         }   
         resultado = (corredoresElite / this.listaCorredores.length) * 100;
-        console.log(`${resultado}%`)
-        return `${resultado}%`; 
+        return `${resultado.toFixed(2)}%`; 
     }    
 }
     

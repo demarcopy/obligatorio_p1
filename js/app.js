@@ -17,7 +17,15 @@ function inicio() {
         e.preventDefault();
         inscribirCorredor();
     }); 
-
+    document.getElementById('datos').addEventListener('click', function (e){
+        e.preventDefault();
+        despliegue('datos');
+    }); 
+    document.getElementById('estadisticas').addEventListener('click', function (e){
+        e.preventDefault();
+        despliegue('estadisticas');
+        insertarDatosGenerales()
+    }); 
 }
 
 
@@ -146,4 +154,34 @@ function inscribirCorredor() {
             //sistema.CarreraConMasInscriptos()ssss
         }
     }
+}
+
+function despliegue(boton) {
+    let sectionEstadisticas=document.getElementById("secEstadisticas");
+    let sectionDatos=document.getElementById('secDatos');
+    if (boton==='datos') {
+        if (sectionDatos.style.display === "none") {
+            sectionDatos.style.display= "block";
+            sectionEstadisticas.style.display = 'none';
+        }
+        console.log('entro datos')
+    } else{
+        if (sectionEstadisticas.style.display === "none" || sectionEstadisticas.style.display === "" ) {
+            sectionEstadisticas.style.display = "block";
+            console.log('entro estadisticas 0');
+            sectionDatos.style.display = "none"
+        }
+    }
+}
+
+function insertarDatosGenerales() {
+    let promedioInscripciones = sistema.promInscripcionesPorCarrera();
+    let carreraMasInscriptos = sistema.CarreraConMas();
+    let CarreraSinInscriptos = sistema.CarreraSinInscriptos();
+    let porcentajeElite = sistema.porcentajeElite();
+
+    console.log(promedioInscripciones)
+    console.log(carreraMasInscriptos)
+    console.log(CarreraSinInscriptos)
+    console.log(porcentajeElite)
 }

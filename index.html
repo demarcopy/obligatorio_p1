@@ -17,11 +17,11 @@
         <img src = "img/img1.jpg" alt="Banner corredor" height="300">
     </header>
         <br>
-    <button onclick="location.href = '#a1'" id="datos">Datos</button>
-    <button onclick="location.href = '#a2'" id="estadisticas">Estadísticas</button>
+    <button type="button" id="datos">Datos</button>
+    <button type="button" id="estadisticas">Estadísticas</button>
     <br>
     <br>
-    <section> <!--Seccion Datos-->
+    <section id="secDatos"> <!--Seccion Datos-->
         <a id="a1"></a>
         <h2>Datos</h2>
         <article> <!--articulo carreras-->
@@ -141,27 +141,27 @@
         </article>
     </section> <!--Seccion Estadisticas-->
     <br>
-    <section>
+    <section id="secEstadisticas">
         <h2>Estadísticas</h2>
         <a id="a2"></a>
         <article> <!--Articulo Datos Generales-->   
             <h4>Datos generales</h4>
                 <div>
-                    <p>Promedio de inscriptos por carrera: Sin datos</p>
+                    <p id="promInscriptos">Promedio de inscriptos por carrera: Sin datos</p>
                 </div>
                 <div>
                     <p>Carrera/s con más inscriptos:</p>
-                    <ul>
+                    <ul id="listaCarrerasInscriptos">
                         <li id="carreraMasInscriptosLi">Sin datos</li>
                     </ul>
                 </div>
                 <div>
                     <p>Carreras sin inscriptos ordenadas por fecha:</p>
-                    <ul>
+                    <ul id="carrerasSinInscriptos">
                         <li id="carreraSinInscriptosLi">Sin datos</li>
                     </ul>
                 </div>
-                <div>
+                <div id="promCorredoresElite">
                     <p>Promedio de corredores de élite: Sin datos</p>
                 </div>                
         </article>  

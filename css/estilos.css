@@ -32,3 +32,9 @@ header {
   border: 1px solid black;
   border-collapse: collapse;
 }
+#secEstadisticas {
+    display: none;
+}
+#secDatos {
+    display: block;
+}
