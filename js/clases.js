@@ -121,8 +121,7 @@ class Sistema {
         if (cantInscriptosArray[i] > maximo) {
             maximo = cantInscriptosArray[i];
         }
-    }
-    
+    }   
     let resultado = '';
     cantInscriptosArray.forEach((cantidad, i) => {
         if (cantidad === maximo) {
@@ -135,6 +134,7 @@ class Sistema {
     }
     CarreraSinInscriptos() {
         let sinInscriptos=[];
+        let resultado = []
         for(let i=0;i<= this.listaCarreras.length-1; i++) {
             let nombreCarrera=this.listaCarreras[i].nombre;
             let suma=0;
@@ -143,22 +143,29 @@ class Sistema {
                     suma++
                 }
             }
-        if(suma===0) {
-            sinInscriptos.push(nombreCarrera);
+            if(suma===0) {
+                sinInscriptos.push(nombreCarrera);
+            }
         }
-        }
+        resultado = sinInscriptos.sort((a,b) => a.ordenarCreciente(b))
+        console.log(resultado)
+        return resultado
     }
+    porcentajeElite() { 
+        let corredoresElite = 0;
+        let resultado = 0;
+        for (const corredor of this.listaCorredores) {
+            if (corredor.tipo === "Deportista Elite") {
+                corredoresElite ++;
+            }
+        }   
+        resultado = (corredoresElite / this.listaCorredores.length) * 100;
+        console.log(`${resultado}%`)
+        return `${resultado}%`; 
+    }    
 }
-/*       
-    }
-    }
-    listaDeCarrerasSinInscriptos() { //ordenados por fecha creciente
+    
 
-    }
-    porcentajeElite(s) { 
-   
-    }
- */
 
 
 class Carrera {
