@@ -120,19 +120,20 @@ class Sistema {
     for (let i = 0; i < cantInscriptosArray.length; i++) {
         if (cantInscriptosArray[i] > maximo) {
             maximo = cantInscriptosArray[i];
-            console.log(maximo);
         }
     }   
     let resultado = '';
     cantInscriptosArray.forEach((cantidad, i) => {
         if (cantidad === maximo) {
-            resultado += auxArray[i] + ' ';
+            console.log(auxArray[i]);
         }
     });
-
-
-    carrerasMasInscriptos.push( `Las carreras con más inscriptos son: ${resultado}`)
-    carrerasMasInscriptos.push( `Cantidad de inscriptos:${maximo}`)
+    
+    for (let i=0;i<auxArray.length;i++) {
+        console.log(auxArray[i]);
+        carrerasMasInscriptos.push( `${auxArray[i]} Cantidad de inscriptos: ${maximo}`);
+    }
+    
     return carrerasMasInscriptos
     }
     CarreraSinInscriptos() {

@@ -164,7 +164,6 @@ function despliegue(boton) {
             sectionDatos.style.display= "block";
             sectionEstadisticas.style.display = 'none';
         }
-        console.log('entro datos')
     } else{
         if (sectionEstadisticas.style.display === "none" || sectionEstadisticas.style.display === "" ) {
             sectionEstadisticas.style.display = "block";
@@ -175,13 +174,23 @@ function despliegue(boton) {
 }
 
 function insertarDatosGenerales() {
-    let promedioInscripciones = sistema.promInscripcionesPorCarrera();
-    let carreraMasInscriptos = sistema.CarreraConMas();
-    let CarreraSinInscriptos = sistema.CarreraSinInscriptos();
-    let porcentajeElite = sistema.porcentajeElite();
+    const promedioInscripciones = sistema.promInscripcionesPorCarrera();
+    const carreraMasInscriptos = sistema.CarreraConMas();
+    const carreraSinInscriptos = sistema.CarreraSinInscriptos();
+    const porcentajeElite = sistema.porcentajeElite();
+    
+    document.getElementById('promInscriptos').textContent= ("Promedio de inscriptos por carrera: " + promedioInscripciones );
+    const ListaConMas=document.getElementById('listaCarrerasInscriptos');
+    ListaConMas.innerHTML="";
+    carreraMasInscriptos.forEach(i => {
+        const li=document.createElement("li");
+        li.textContent=i;
+        ListaConMas.appendChild(li);
+    });
 
-    console.log(promedioInscripciones)
+
+    //console.log(promedioInscripciones)
     console.log(carreraMasInscriptos)
-    console.log(CarreraSinInscriptos)
-    console.log(porcentajeElite)
+    //console.log(CarreraSinInscriptos)
+    //console.log(porcentajeElite)
 }
