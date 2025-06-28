@@ -150,7 +150,7 @@ function inscribirCorredor() {
             let nuevaInscripcion = new Inscripcion(corredor,carrera)
             sistema.agregarInscripcion(nuevaInscripcion);   
             //Se descarga PDF
-            
+            alert('Nuevo corredor inscripto')
             //sistema.CarreraConMasInscriptos()ssss
         }
     }
@@ -167,7 +167,6 @@ function despliegue(boton) {
     } else{
         if (sectionEstadisticas.style.display === "none" || sectionEstadisticas.style.display === "" ) {
             sectionEstadisticas.style.display = "block";
-            console.log('entro estadisticas 0');
             sectionDatos.style.display = "none"
         }
     }
@@ -179,7 +178,12 @@ function insertarDatosGenerales() {
     const carreraSinInscriptos = sistema.CarreraSinInscriptos();
     const porcentajeElite = sistema.porcentajeElite();
     
+    // Insertar promedio de inscriptos por carrera
     document.getElementById('promInscriptos').textContent= ("Promedio de inscriptos por carrera: " + promedioInscripciones );
+
+    // Insertar carrera con mas inscripciones
+
+    //Esto falta ordenarlo por fecha.
     const ListaConMas=document.getElementById('listaCarrerasInscriptos');
     ListaConMas.innerHTML="";
     carreraMasInscriptos.forEach(i => {
@@ -188,9 +192,24 @@ function insertarDatosGenerales() {
         ListaConMas.appendChild(li);
     });
 
+    // Insertar carreras sin inscriptos
+    let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos')
+    carreraSinInscriptosList.innerHTML="";
+
+    carreraSinInscriptos.forEach(i => {
+        const li=document.createElement("li");
+        li.textContent=i;
+        carreraSinInscriptosList.appendChild(li);
+    });
+
+    
+
+    // Insertar porcentaje de elite.
+
+
 
     //console.log(promedioInscripciones)
-    console.log(carreraMasInscriptos)
+   // console.log(carreraMasInscriptos)
     //console.log(CarreraSinInscriptos)
     //console.log(porcentajeElite)
 }

@@ -138,20 +138,25 @@ class Sistema {
     }
     CarreraSinInscriptos() {
         let sinInscriptos=[];
-        let resultado = []
-        for(let i=0;i<= this.listaCarreras.length-1; i++) {
-            let nombreCarrera=this.listaCarreras[i].nombre;
-            let suma=0;
-            for(let j=0; j<=this.listaInscripciones.length-1;j++) {
-                if(this.listaInscripciones[j].carrera.nombre==nombreCarrera) {
-                    suma++
+        let resultado = [] 
+        for(let i = 0; i < this.listaCarreras.length; i++) {
+            let carreraActual = this.listaCarreras[i];
+            let tieneInscripciones = false;
+            for(let j = 0; j < this.listaInscripciones.length; j++) {
+
+                if(this.listaInscripciones[j].carrera.nombre === carreraActual.nombre) {
+                    tieneInscripciones = true;
+                    break;
                 }
             }
-            if(suma===0) {
-                sinInscriptos.push(nombreCarrera);
+            if(!tieneInscripciones) {
+                sinInscriptos.push(carreraActual);
             }
         }
-        resultado = sinInscriptos.sort((a,b) => a.ordenarCreciente(b))
+        sinInscriptos.sort((a,b) => a.compararFechaCreciente(b))
+        for (const carrera of sinInscriptos) {
+            resultado.push(carrera.nombre)
+        }
         return resultado
     }
     porcentajeElite() { 
@@ -164,7 +169,7 @@ class Sistema {
         }   
         resultado = (corredoresElite / this.listaCorredores.length) * 100;
         return `${resultado.toFixed(2)}%`; 
-    }    
+    } 
 }
     
 
@@ -174,8 +179,11 @@ class Carrera {
     constructor(nombre,departamento,fecha,cupo){
         this.nombre = nombre; 
         this.departamento = departamento;
-        this.fecha = fecha;
+        this.fecha = new Date(fecha);
         this.cupo = cupo;
+    }
+    compararFechaCreciente(otraCarrera){
+        return  this.fecha - otraCarrera.fecha
     }
 }
 
