@@ -82,10 +82,11 @@ class Sistema {
     }
     agregarInscripcion(nuevaInscripcion){
         if(!this.listaInscripciones.some(
-            elemento=> elemento.carrera.nombre === nuevaInscripcion.carrera.nombre && 
-            elemento.corredor.cedula === nuevaInscripcion.corredor.cedula))
+            inscripcionIngresada=> inscripcionIngresada.carrera.nombre === nuevaInscripcion.carrera.nombre && 
+            inscripcionIngresada.corredor.cedula === nuevaInscripcion.corredor.cedula))
         {   
-            if (this.listaInscripciones.some(e => e.carrera.nombre === nuevaInscripcion.carrera.nombre)) {
+            //Aca se valida si la carrera a Inscribirse ya tiene por lo menos una inscripcion.
+            if (this.listaInscripciones.some(inscripcionIngresada => inscripcionIngresada.carrera.nombre === nuevaInscripcion.carrera.nombre)) {
                 let max = 0
                 for (const inscripcion of this.listaInscripciones) {
                     if (inscripcion.corredor.numero > max ) {
@@ -198,7 +199,7 @@ class Sistema {
         //Nombre
 
         if (ordenamiento == 'nombre') {
-            corredoresEnCarrera.sort((a,b) => { return a.ordenarPorNombre(b)})
+            corredoresEnCarrera.sort((a,b) => { return a.nombre.localeCompare(b.nombre)})
         }else{
             corredoresEnCarrera.sort((a,b) => { return a - b})
         }

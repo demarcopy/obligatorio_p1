@@ -27,6 +27,9 @@ function inicio() {
         insertarDatosGenerales();
         cargarDatosTabla();
     }); 
+    document.getElementById('ordenarInscriptosOpciones').addEventListener('change', function (e) {
+        cargarDatosTabla();
+    });
 }
 
 
@@ -224,6 +227,8 @@ function cargarDatosTabla(){
     let corredoresOrdenados = sistema.devuelveCorredoresEnCarrera(carreraSeleccionada,ordenSeleccionado)
     console.log(corredoresOrdenados) 
     //Agregar corredor a tabla.
+
+
     let tablaInscriptos = document.getElementById('tablaInscriptosBody')
     tablaInscriptos.innerHTML="";
     corredoresOrdenados.forEach(corredor => {
