@@ -85,10 +85,20 @@ class Sistema {
             elemento=> elemento.carrera.nombre === nuevaInscripcion.carrera.nombre && 
             elemento.corredor.cedula === nuevaInscripcion.corredor.cedula))
         {   
+            if (this.listaInscripciones.some(e => e.carrera.nombre === nuevaInscripcion.carrera.nombre)) {
+                let max = 0
+                for (const inscripcion of this.listaInscripciones) {
+                    if (inscripcion.corredor.numero > max ) {
+                        max = inscripcion.corredor.numero
+                    }
+                }
+                nuevaInscripcion.corredor.numero = max+1
+            }else{
+                nuevaInscripcion.corredor.numero = 1
+            }       
             this.listaInscripciones.push(nuevaInscripcion);
             this.bajarCupo(nuevaInscripcion.carrera.nombre);
             alert('Nuevo corredor inscripto')
-            console.log(this.listaInscripciones)
         }else {
             alert('El corredor ya esta inscripto a esta carrera.')
         }
