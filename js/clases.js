@@ -185,17 +185,11 @@ class Sistema {
     } 
     devuelveCorredoresEnCarrera(carrera,ordenamiento){
     let corredoresEnCarrera = [];
-
     for (const inscripcion of this.listaInscripciones) {
         if (inscripcion.carrera.nombre === carrera) {
             corredoresEnCarrera.push(inscripcion.corredor)  
         }      
     }
-    //Ordenar los corredores.
-        //Numero
-
-        //Nombre
-
         if (ordenamiento == 'nombre') {
             corredoresEnCarrera.sort((a,b) => { return a.nombre.localeCompare(b.nombre)})
         }else{
@@ -203,7 +197,12 @@ class Sistema {
         }
     return corredoresEnCarrera
     }
-    
+    carrerasPorDepartamento(){
+        console.log('WIP')
+    }
+    inscripcionesPorDepartamento(){
+        console.log('WIP')
+    }
 }
     
 
@@ -228,9 +227,6 @@ class Corredor{
         this.cedula = cedula;
         this.vencFichaMedica = vencFichaMedica;
         this.tipo = tipo;
-    }
-    ordenarPorNombre(otroCorredor){
-        return this.nombre - otroCorredor.nombre
     }
 }
 

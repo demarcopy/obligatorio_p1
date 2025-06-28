@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Rodrigo">
     <meta name="author" content="Bruno">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    
     <script src="js/clases.js"></script>
     <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
@@ -201,12 +202,14 @@
         </article>     
         <article>  <!--Articulo Mapa-->
             <h4>Visualizar mapa</h4>  
-            <div>
-                <input type="radio" id="mapaOrdenCarrera" name="mapaOrden">
+            <div id="ordenDatosMapa">
+                <input type="radio" id="mapaOrdenCarrera" name="mapaOrden" value='carrera' checked>
                 <label for="mapaOrdenCarrera">Por Carreras</label>
-                <input type="radio" id="mapaOrdenInscripcion" name="mapaOrden">
+                <input type="radio" id="mapaOrdenInscripcion" name="mapaOrden" value='inscripcion'>
                 <label for="mapaOrdenInscripcion">Por Inscripciones</label>
             </div>
+            <div id="geochart" style="width: 800px; height: 600px;"></div>
+            <div id="info"></div>
         </article>               
     </section>
     <footer> <!-- Footer Final-->

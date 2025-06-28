@@ -26,6 +26,7 @@ function inicio() {
         despliegue('estadisticas');
         insertarDatosGenerales();
         cargarDatosTabla();
+        estadisticasMapa();
     }); 
     document.getElementById('ordenarInscriptosOpciones').addEventListener('change', function (e) {
         cargarDatosTabla();
@@ -33,6 +34,9 @@ function inicio() {
     document.getElementById('consultaInscriptosCarrera').addEventListener('change', function (e) {
         cargarDatosTabla();
     });
+    document.getElementById('ordenDatosMapa').addEventListener('change', function (e) {
+        estadisticasMapa();
+    });    
 }
 
 
@@ -257,4 +261,56 @@ function cargarDatosTabla(){
         tablaInscriptos.appendChild(tablaFilaCorredor)
     });
 
+}
+
+function estadisticasMapa() {
+//Inicializa con la libreria el mapa.
+google.charts.load('current', {
+    'packages': ['geochart'],
+});
+
+let estadisticaMapa = document.querySelector('input[name="mapaOrden"]:checked').value;
+console.log(estadisticaMapa)
+
+if (estadisticaMapa === 'carrera') {
+    google.charts.setOnLoadCallback(cargarCarreras); 
+} else {
+    google.charts.setOnLoadCallback(cargarInscripciones);
+}
+
+sistema.carrerasPorDepartamento;
+sistema.inscripcionesPorDepartamento;
+
+function dibujarMapa(datos) {
+    const data = google.visualization.arrayToDataTable(datos);
+  
+    const options = {
+      region: 'UY',
+      resolution: 'provinces',
+      displayMode: 'regions',
+      colorAxis: { colors: ['#e0f3f8', '#08589e'] }
+    };
+  
+    const chart = new google.visualization.GeoChart(document.getElementById('geochart'));
+    chart.draw(data, options);
+  }
+function cargarCarreras() {
+    const datosCarreras = [
+      ['Departamento', 'Carreras'],
+      ['Montevideo', 5],
+      ['Canelones', 3],
+      ['Maldonado', 2]
+    ];
+    dibujarMapa(datosCarreras);
+  }
+  
+  function cargarInscripciones() {
+    const datosInscripciones = [
+      ['Departamento', 'Inscripciones'],
+      ['Montevideo', 120],
+      ['Canelones', 85],
+      ['Maldonado', 40]
+    ];
+    dibujarMapa(datosInscripciones);
+  }    
 }
