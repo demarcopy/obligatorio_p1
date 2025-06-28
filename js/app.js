@@ -24,7 +24,8 @@ function inicio() {
     document.getElementById('estadisticas').addEventListener('click', function (e){
         e.preventDefault();
         despliegue('estadisticas');
-        insertarDatosGenerales()
+        insertarDatosGenerales();
+        cargarDatosTabla();
     }); 
 }
 
@@ -50,6 +51,7 @@ function agregarCarrera() {
             formCarrera.reset()
             carreraEnLista('listaCarrerasPatrocinador')
             carreraEnLista('carrerasInscripcion')
+            carreraEnLista('carreraConsultaInscriptos')
         }
     }else{
         alert('Faltan validaciones')
@@ -150,8 +152,8 @@ function inscribirCorredor() {
             let nuevaInscripcion = new Inscripcion(corredor,carrera)
             sistema.agregarInscripcion(nuevaInscripcion);   
             //Se descarga PDF
+            //Falta la logica para asignarle un numero al corredor.
             alert('Nuevo corredor inscripto')
-            //sistema.CarreraConMasInscriptos()ssss
         }
     }
 }
@@ -176,13 +178,11 @@ function insertarDatosGenerales() {
     const promedioInscripciones = sistema.promInscripcionesPorCarrera();
     const carreraMasInscriptos = sistema.CarreraConMas();
     const carreraSinInscriptos = sistema.CarreraSinInscriptos();
-    const porcentajeElite = sistema.porcentajeElite();
-    
+    const porcentajeElite = sistema.porcentajeElite();  
     // Insertar promedio de inscriptos por carrera
     if (promedioInscripciones != 0) {
         document.getElementById('promInscriptos').textContent= ("Promedio de inscriptos por carrera: " + promedioInscripciones );       
     }
-
     // Insertar carrera con mas inscripciones
     if (carreraMasInscriptos.length > 0) {
         const ListaConMas = document.getElementById('listaCarrerasInscriptos');
@@ -193,7 +193,6 @@ function insertarDatosGenerales() {
             ListaConMas.appendChild(li);
         });      
     }
-
     // Insertar carreras sin inscriptos
     if(carreraSinInscriptos.length > 0){
         let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos')
@@ -204,11 +203,23 @@ function insertarDatosGenerales() {
             carreraSinInscriptosList.appendChild(li);
         });
     }
-
     // Insertar porcentaje de elite.
     if (porcentajeElite != 0) {
         let parrafCorredoresElite = document.getElementById('parrafCorredoresElite')
         parrafCorredoresElite.textContent = `Promedio de corredores de élite: ${porcentajeElite}%`;      
     }
+}
+
+function cargarDatosTabla(){
+    console.log('Entro cargar tabla');
+
+    let carreraBloqueSelect = document.getElementById('carreraConsultaInscriptos')
+
+    //Carrera para pedir al metodo
+    const carreraSeleccionada = carreraBloqueSelect.value;
+    //Orden para pedir al metodo
+    let ordenSeleccionado = document.querySelector('input[name="ordenInscriptos"]:checked').value;
+  
+    let corredoresOrdenados = sistema.devuelveCorredoresEnCarrera(carreraSeleccionada,ordenSeleccionado)
 
 }

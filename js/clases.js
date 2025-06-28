@@ -85,9 +85,7 @@ class Sistema {
             duplicado.carrera.nombre===nuevaInscripcion.carrera.nombre && duplicado.corredor===nuevaInscripcion.corredor
         )) {
             this.listaInscripciones.push(nuevaInscripcion);
-            //console.log('Pusheo Inscripcion');
             this.bajarCupo(nuevaInscripcion.carrera.nombre)
-            console.log(this.listaInscripciones);
             }
 
     }
@@ -112,8 +110,6 @@ class Sistema {
             cantInscriptosArray.push(1); 
         } else {
             cantInscriptosArray[index]++;
-            console.log(cantInscriptosArray);
-            console.log(auxArray);
         }
     }
     let maximo = 0;
@@ -175,6 +171,28 @@ class Sistema {
         
         return resultado; 
     } 
+    devuelveCorredoresEnCarrera(carrera,ordenamiento){
+    let corredoresEnCarrera = [];
+
+    for (const inscripcion of this.listaInscripciones) {
+        if (inscripcion.carrera.nombre === carrera) {
+            corredoresEnCarrera.push(inscripcion.corredor)  
+        }      
+    }
+    //Ordenar los corredores.
+        //Numero
+
+        //Nombre
+
+        if (ordenamiento == 'nombre') {
+            corredoresEnCarrera.sort((a,b) => { return a.ordenarPorNombre(b)})
+        }else{
+            corredoresEnCarrera.sort((a,b) => { return a-b })
+        }
+
+    console.log(corredoresEnCarrera) 
+    }
+    
 }
     
 
@@ -199,6 +217,9 @@ class Corredor{
         this.cedula = cedula;
         this.vencFichaMedica = vencFichaMedica;
         this.tipo = tipo;
+    }
+    ordenarPorNombre(otroCorredor){
+        return this.nombre - otroCorredor.nombre
     }
 }
 
