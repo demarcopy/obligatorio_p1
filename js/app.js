@@ -179,26 +179,31 @@ function insertarDatosGenerales() {
     const porcentajeElite = sistema.porcentajeElite();
     
     // Insertar promedio de inscriptos por carrera
-    document.getElementById('promInscriptos').textContent= ("Promedio de inscriptos por carrera: " + promedioInscripciones );
+    if (promedioInscripciones != 0) {
+        document.getElementById('promInscriptos').textContent= ("Promedio de inscriptos por carrera: " + promedioInscripciones );       
+    }
 
     // Insertar carrera con mas inscripciones
-        //Esto no hay que ordenarlo?
-    const ListaConMas = document.getElementById('listaCarrerasInscriptos');
-    ListaConMas.innerHTML = "";
-    carreraMasInscriptos.forEach(i => {
-        const li=document.createElement("li");
-        li.textContent=i;
-        ListaConMas.appendChild(li);
-    });
+    if (carreraMasInscriptos.length > 0) {
+        const ListaConMas = document.getElementById('listaCarrerasInscriptos');
+        ListaConMas.innerHTML = "";
+        carreraMasInscriptos.forEach(i => {
+            const li=document.createElement("li");
+            li.textContent=i;
+            ListaConMas.appendChild(li);
+        });      
+    }
 
     // Insertar carreras sin inscriptos
-    let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos')
-    carreraSinInscriptosList.innerHTML="";
-    carreraSinInscriptos.forEach(i => {
-        const li=document.createElement("li");
-        li.textContent=i;
-        carreraSinInscriptosList.appendChild(li);
-    });
+    if(carreraSinInscriptos.length > 0){
+        let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos')
+        carreraSinInscriptosList.innerHTML="";
+        carreraSinInscriptos.forEach(i => {
+            const li=document.createElement("li");
+            li.textContent=i;
+            carreraSinInscriptosList.appendChild(li);
+        });
+    }
 
     // Insertar porcentaje de elite.
     if (porcentajeElite != 0) {
@@ -206,10 +211,4 @@ function insertarDatosGenerales() {
         parrafCorredoresElite.textContent = `Promedio de corredores de élite: ${porcentajeElite}%`;      
     }
 
-
-
-    //console.log(promedioInscripciones)
-   // console.log(carreraMasInscriptos)
-    //console.log(CarreraSinInscriptos)
-    //console.log(porcentajeElite)
 }
