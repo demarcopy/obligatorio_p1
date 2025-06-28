@@ -103,7 +103,6 @@ class Sistema {
             alert('El corredor ya esta inscripto a esta carrera.')
         }
     }
-
     promInscripcionesPorCarrera(){
         let totalInscripciones = this.listaInscripciones.length;
         let totalCarreras = this.listaCarreras.length;
@@ -136,12 +135,11 @@ class Sistema {
     let resultado = '';
     cantInscriptosArray.forEach((cantidad, i) => {
         if (cantidad === maximo) {
-            console.log(auxArray[i]);
+            console.log(auxArray[i]);  //Y esto??
         }
     });
     
     for (let i=0;i<auxArray.length;i++) {
-        console.log(auxArray[i]);
         carrerasMasInscriptos.push( `${auxArray[i]} Cantidad de inscriptos: ${maximo}`);
     }
     
@@ -202,10 +200,9 @@ class Sistema {
         if (ordenamiento == 'nombre') {
             corredoresEnCarrera.sort((a,b) => { return a.ordenarPorNombre(b)})
         }else{
-            corredoresEnCarrera.sort((a,b) => { return a-b })
+            corredoresEnCarrera.sort((a,b) => { return a - b})
         }
-
-    console.log(corredoresEnCarrera) 
+    return corredoresEnCarrera
     }
     
 }
