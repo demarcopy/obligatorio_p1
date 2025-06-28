@@ -81,14 +81,19 @@ class Sistema {
         this.listaCarreras[indice].cupo = this.listaCarreras[indice].cupo  -1
     }
     agregarInscripcion(nuevaInscripcion){
-        if(!this.listaInscripciones.some(duplicado=>
-            duplicado.carrera.nombre===nuevaInscripcion.carrera.nombre && duplicado.corredor===nuevaInscripcion.corredor
-        )) {
+        if(!this.listaInscripciones.some(
+            elemento=> elemento.carrera.nombre === nuevaInscripcion.carrera.nombre && 
+            elemento.corredor.cedula === nuevaInscripcion.corredor.cedula))
+        {   
             this.listaInscripciones.push(nuevaInscripcion);
-            this.bajarCupo(nuevaInscripcion.carrera.nombre)
-            }
-
+            this.bajarCupo(nuevaInscripcion.carrera.nombre);
+            alert('Nuevo corredor inscripto')
+            console.log(this.listaInscripciones)
+        }else {
+            alert('El corredor ya esta inscripto a esta carrera.')
+        }
     }
+
     promInscripcionesPorCarrera(){
         let totalInscripciones = this.listaInscripciones.length;
         let totalCarreras = this.listaCarreras.length;
