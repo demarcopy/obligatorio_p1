@@ -30,6 +30,9 @@ function inicio() {
     document.getElementById('ordenarInscriptosOpciones').addEventListener('change', function (e) {
         cargarDatosTabla();
     });
+    document.getElementById('consultaInscriptosCarrera').addEventListener('change', function (e) {
+        cargarDatosTabla();
+    });
 }
 
 
@@ -215,8 +218,6 @@ function insertarDatosGenerales() {
 }
 
 function cargarDatosTabla(){
-    console.log('Entro cargar tabla');
-
     let carreraBloqueSelect = document.getElementById('carreraConsultaInscriptos')
 
     //Carrera para pedir al metodo
@@ -225,9 +226,8 @@ function cargarDatosTabla(){
     let ordenSeleccionado = document.querySelector('input[name="ordenInscriptos"]:checked').value;
   
     let corredoresOrdenados = sistema.devuelveCorredoresEnCarrera(carreraSeleccionada,ordenSeleccionado)
-    console.log(corredoresOrdenados) 
-    //Agregar corredor a tabla.
 
+    //Agregar corredor a tabla.
 
     let tablaInscriptos = document.getElementById('tablaInscriptosBody')
     tablaInscriptos.innerHTML="";
@@ -255,12 +255,6 @@ function cargarDatosTabla(){
         tablaInscriptos.appendChild(elemTD5)
            
         tablaInscriptos.appendChild(tablaFilaCorredor)
-        /*
-        const li=document.createElement("li");
-        li.textContent=i;
-        carreraSinInscriptosList.appendChild(li);
-        */
     });
-
 
 }

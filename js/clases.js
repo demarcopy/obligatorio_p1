@@ -116,34 +116,32 @@ class Sistema {
     const auxArray = []; 
     const cantInscriptosArray = [];
     const carrerasMasInscriptos = [];
-
+    // Itera todas las inscripciones
     for (let i = 0; i < this.listaInscripciones.length; i++) {
         const nombreCarrera = this.listaInscripciones[i].carrera.nombre;
+        //Evalua si la carrera en el indice actual existe en array auxiliar, si no esta lo pushea
         const index = auxArray.indexOf(nombreCarrera);
         if (index === -1) {
             auxArray.push(nombreCarrera); 
             cantInscriptosArray.push(1); 
+            //Si la carrera ya esta en array auxiliar incrementa la cantidad de inscriptos por el indice de la carrera.
         } else {
             cantInscriptosArray[index]++;
         }
     }
+    //Con la logica de los dos arrays anteriores evalua que carrera tiene mas inscriptos.
     let maximo = 0;
     for (let i = 0; i < cantInscriptosArray.length; i++) {
         if (cantInscriptosArray[i] > maximo) {
             maximo = cantInscriptosArray[i];
         }
     }   
-    let resultado = '';
+    //Sabiendo el maximo evaluamos aquellos que estan en el max de inscriptos para pushearlo al array de resultado.
     cantInscriptosArray.forEach((cantidad, i) => {
         if (cantidad === maximo) {
-            console.log(auxArray[i]);  //Y esto??
+            carrerasMasInscriptos.push( `${auxArray[i]} Cantidad de inscriptos: ${maximo}`);
         }
     });
-    
-    for (let i=0;i<auxArray.length;i++) {
-        carrerasMasInscriptos.push( `${auxArray[i]} Cantidad de inscriptos: ${maximo}`);
-    }
-    
     return carrerasMasInscriptos
     }
     CarreraSinInscriptos() {
