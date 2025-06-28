@@ -197,8 +197,21 @@ class Sistema {
         }
     return corredoresEnCarrera
     }
-    carrerasPorDepartamento(){
-        console.log('WIP')
+    carrerasPorDepartamento(){ 
+        const listaDepartamentos = []; 
+        const listaCanCarreras = [];
+        const resultado = [];
+        // Itera todas las inscripciones
+        for (let i = 0; i < 20; i++) {
+            listaCanCarreras.push(0);
+            let nombreDepartamento = this.listaCarreras.departamento;
+            listaDepartamentos.push(nombreDepartamento);
+            for (elemento of this.listaCarreras) {
+                if(elemento.departamento===nombreDepartamento) {
+                    listaCanCarreras[i]++;
+                }
+            }
+        }
     }
     inscripcionesPorDepartamento(){
         console.log('WIP')
