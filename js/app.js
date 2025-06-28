@@ -182,10 +182,9 @@ function insertarDatosGenerales() {
     document.getElementById('promInscriptos').textContent= ("Promedio de inscriptos por carrera: " + promedioInscripciones );
 
     // Insertar carrera con mas inscripciones
-
-    //Esto falta ordenarlo por fecha.
-    const ListaConMas=document.getElementById('listaCarrerasInscriptos');
-    ListaConMas.innerHTML="";
+        //Esto no hay que ordenarlo?
+    const ListaConMas = document.getElementById('listaCarrerasInscriptos');
+    ListaConMas.innerHTML = "";
     carreraMasInscriptos.forEach(i => {
         const li=document.createElement("li");
         li.textContent=i;
@@ -195,16 +194,17 @@ function insertarDatosGenerales() {
     // Insertar carreras sin inscriptos
     let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos')
     carreraSinInscriptosList.innerHTML="";
-
     carreraSinInscriptos.forEach(i => {
         const li=document.createElement("li");
         li.textContent=i;
         carreraSinInscriptosList.appendChild(li);
     });
 
-    
-
     // Insertar porcentaje de elite.
+    if (porcentajeElite != 0) {
+        let parrafCorredoresElite = document.getElementById('parrafCorredoresElite')
+        parrafCorredoresElite.textContent = `Promedio de corredores de élite: ${porcentajeElite}%`;      
+    }
 
 
 

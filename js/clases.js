@@ -166,9 +166,14 @@ class Sistema {
             if (corredor.tipo === "Deportista Elite") {
                 corredoresElite ++;
             }
-        }   
-        resultado = (corredoresElite / this.listaCorredores.length) * 100;
-        return `${resultado.toFixed(2)}%`; 
+        }
+        if (this.listaCorredores.length === 0) {
+            resultado = 0
+        }else{
+            resultado = ((corredoresElite / this.listaCorredores.length) * 100).toFixed(2);
+        }
+        
+        return resultado; 
     } 
 }
     
