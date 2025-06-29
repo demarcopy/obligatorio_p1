@@ -159,8 +159,6 @@ function inscribirCorredor() {
         }else{       
             let nuevaInscripcion = new Inscripcion(corredor,carrera);
             sistema.agregarInscripcion(nuevaInscripcion); 
-            descargarInscripcion(nuevaInscripcion);
-            //Se descarga PDF        
         }
     }
 }
@@ -235,23 +233,29 @@ function cargarDatosTabla(){
 
         let elemTD1 = document.createElement('td');
         elemTD1.textContent = corredor.nombre;
-        tablaInscriptos.appendChild(elemTD1);
+        tablaFilaCorredor.appendChild(elemTD1);
 
         let elemTD2 = document.createElement('td');
         elemTD2.textContent = corredor.edad;
-        tablaInscriptos.appendChild(elemTD2);
+        tablaFilaCorredor.appendChild(elemTD2);
 
         let elemTD3 = document.createElement('td');
         elemTD3.textContent = corredor.cedula;
-        tablaInscriptos.appendChild(elemTD3);
+        tablaFilaCorredor.appendChild(elemTD3);
 
         let elemTD4 = document.createElement('td');
         elemTD4.textContent = corredor.vencFichaMedica;
-        tablaInscriptos.appendChild(elemTD4);
+        tablaFilaCorredor.appendChild(elemTD4);
 
         let elemTD5 = document.createElement('td');
         elemTD5.textContent = corredor.numero;
-        tablaInscriptos.appendChild(elemTD5);
+        tablaFilaCorredor.appendChild(elemTD5);
+
+        if(corredor.tipo==="Deportista Elite") {
+            tablaFilaCorredor.classList.add('claseElite');
+            
+        }
+
            
         tablaInscriptos.appendChild(tablaFilaCorredor);
     });

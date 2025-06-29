@@ -38,3 +38,10 @@ header {
 #secDatos {
     display: block;
 }
+.claseElite {
+    background-color: red;
+}
+#carreraConsultaInscriptos {
+    padding: 1px 8px;
+     border-radius: 5px;
+}

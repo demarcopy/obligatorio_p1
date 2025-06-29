@@ -99,6 +99,7 @@ class Sistema {
             }       
             this.listaInscripciones.push(nuevaInscripcion);
             this.bajarCupo(nuevaInscripcion.carrera.nombre);
+            descargarInscripcion(nuevaInscripcion);
         }else {
             alert('El corredor ya esta inscripto a esta carrera.')
         }
