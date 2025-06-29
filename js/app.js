@@ -159,6 +159,7 @@ function inscribirCorredor() {
         }else{       
             let nuevaInscripcion = new Inscripcion(corredor,carrera);
             sistema.agregarInscripcion(nuevaInscripcion); 
+            descargarInscripcion(nuevaInscripcion);
             //Se descarga PDF        
         }
     }
@@ -294,4 +295,22 @@ function cargarCarreras() {
   function cargarInscripciones() {
     dibujarMapa(inscripcionesPorDepartamento);
   }    
+}
+
+
+function descargarInscripcion(nuevaInscripcion) {
+    const { jsPDF } = window.jspdf;
+    // Generar PDF
+    const pdf = new jsPDF();
+    pdf.text(`Numero de corredor ${nuevaInscripcion.corredor.numero}`, 10, 10);
+    pdf.text(`Nombre del corredor: ${nuevaInscripcion.corredor.nombre}`, 10, 20);
+    pdf.text(`${nuevaInscripcion.corredor.tipo}`, 10, 30);
+    let fechaFormateada = nuevaInscripcion.carrera.fecha.toLocaleDateString('es-UY');
+    pdf.text(`Carrera ${nuevaInscripcion.carrera.nombre} en ${nuevaInscripcion.carrera.departamento} el ${fechaFormateada} ${nuevaInscripcion.carrera.cupoInicial}`, 10, 40);
+    
+    // Descargar PDF
+    pdf.save("comprobante-inscripcion.pdf");
+    
+    // Opcional: Redirigir o mostrar mensaje de éxito
+    alert("¡Inscripción exitosa! Se ha descargado el comprobante.");
 }
