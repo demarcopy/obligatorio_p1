@@ -124,7 +124,6 @@ class Sistema {
         if (index === -1) {
             auxArray.push(this.listaInscripciones[i].carrera); 
             cantInscriptosArray.push(1); 
-            console.log(auxArray)
             //Si la carrera ya esta en array auxiliar incrementa la cantidad de inscriptos por el indice de la carrera.
         } else {
             cantInscriptosArray[index]++;
@@ -142,7 +141,7 @@ class Sistema {
         if (cantidad === maximo) {
             let fecha = auxArray[i].fecha
             let fechaFormateada = fecha.toLocaleDateString('es-UY');
-            carrerasMasInscriptos.push(`${auxArray[i].nombre} en ${auxArray[i].departamento} el ${fechaFormateada} Inscriptos: ${maximo}`);
+            carrerasMasInscriptos.push(`${auxArray[i].nombre} en ${auxArray[i].departamento} el ${fechaFormateada} Cupo:${auxArray[i].cupoInicial} Inscriptos: ${maximo}`);
         }
     });
     return carrerasMasInscriptos
@@ -166,7 +165,8 @@ class Sistema {
         }
         sinInscriptos.sort((a,b) => a.compararFechaCreciente(b))
         for (const carrera of sinInscriptos) {
-            resultado.push(carrera.nombre)
+            let fechaFormateada = carrera.fecha.toLocaleDateString('es-UY');
+            resultado.push(`${carrera.nombre} en ${carrera.departamento} el ${fechaFormateada} Cupo: ${carrera.cupoInicial}`)
         }
         return resultado
     }
@@ -259,11 +259,12 @@ class Sistema {
 
 
 class Carrera {
-    constructor(nombre,departamento,fecha,cupo){
+    constructor(nombre,departamento,fecha,cupo,cupoInicial){
         this.nombre = nombre; 
         this.departamento = departamento;
         this.fecha = new Date(fecha);
         this.cupo = cupo;
+        this.cupoInicial = cupoInicial;
     }
     compararFechaCreciente(otraCarrera){
         return  this.fecha - otraCarrera.fecha

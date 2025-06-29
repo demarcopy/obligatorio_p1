@@ -49,8 +49,9 @@ function agregarCarrera() {
     let departamento = departamentoElem.options[departamentoElem.selectedIndex].text;
     let fecha = document.getElementById('carreraDateForm').value
     let cupo = parseInt(document.getElementById('cupoFormCarrera').value)
+    let cupoInicial = cupo
 
-    let nuevaCarrera = new Carrera(nombre,departamento,fecha,cupo)
+    let nuevaCarrera = new Carrera(nombre,departamento,fecha,cupo,cupoInicial)
     //Diria de validar tambien que la fecha sea mayor a la actual.
     
     if (formCarrera.checkValidity()) {
@@ -87,85 +88,78 @@ function agregarPatrocinador() {
     let elementoCarreras = document.getElementById('listaCarrerasPatrocinador');
     let carreras = Array.from(elementoCarreras.selectedOptions).map(option => option.value);
     let formpatrocinadores = document.getElementById('formpatrocinadores');
-    let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras)
-    let totalPatrocinadores = sistema.devuelvePatrocinadores()
+    let nuevoPatrocinador = new Patrocinador(nombre,rubro,carreras);
+    let totalPatrocinadores = sistema.devuelvePatrocinadores();
     
     if (formpatrocinadores.reportValidity()) {
         if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
-
-            alert('Patrocinador ya existe - Se actualizan datos')
-            sistema.actualizarPatrocinador(nuevoPatrocinador)
-            formpatrocinadores.reset()
-            console.log(totalPatrocinadores)
-            alert('Patrocinador actualizado')
-            console.log(totalPatrocinadores)
+            alert('Patrocinador ya existe - Se actualizan datos');
+            sistema.actualizarPatrocinador(nuevoPatrocinador);
+            formpatrocinadores.reset();
+            alert('Patrocinador actualizado');
         }else{      
-            sistema.agregarPatrocinador(nuevoPatrocinador)
-            formpatrocinadores.reset()  
-            alert('Patrocinador agregado') 
-            console.log(totalPatrocinadores)
+            sistema.agregarPatrocinador(nuevoPatrocinador);
+            formpatrocinadores.reset();
+            alert('Patrocinador agregado');
         }
     }else{
-        alert('Faltan validaciones')
+        alert('Faltan validaciones');
     }  
 }
 
 function agregarCorredor() {
-    let formCorredor = document.getElementById('formcorredores')
-    let nombre = document.getElementById('nombreCorredores').value
-    let edad = parseInt(document.getElementById('edadCorredores').value)
-    let cedula = document.getElementById('cedulaCorredores').value
-    let fechaVenciminento = document.getElementById('vencFichaCorredor').value
+    let formCorredor = document.getElementById('formcorredores');
+    let nombre = document.getElementById('nombreCorredores').value;
+    let edad = parseInt(document.getElementById('edadCorredores').value);
+    let cedula = document.getElementById('cedulaCorredores').value;
+    let fechaVenciminento = document.getElementById('vencFichaCorredor').value;
     let tipo = document.querySelector('input[name="tipoDeportista"]:checked').value;
-    let nuevoCorredor = new Corredor(nombre,edad,cedula,fechaVenciminento,tipo)
+    let nuevoCorredor = new Corredor(nombre,edad,cedula,fechaVenciminento,tipo);
 
     if (formCorredor.reportValidity()) {
         if (sistema.cedulaUnica(nuevoCorredor.cedula)) {
-            alert('El corredor ya existe')
+            alert('El corredor ya existe');
         }else{
-            sistema.agregarCorredor(nuevoCorredor)
-            corredorEnLista('corredoresInscripcion')
-            formCorredor.reset()
-            alert('Corredor agregado')
+            sistema.agregarCorredor(nuevoCorredor);
+            corredorEnLista('corredoresInscripcion');
+            formCorredor.reset();
+            alert('Corredor agregado');
         }
     }else{
-        alert('Datos Incorrectos')
+        alert('Datos Incorrectos');
     }
 }
 
 function corredorEnLista(idElemento) {
-    let listaCorredores = document.getElementById(idElemento)
-    let totalCorredores = sistema.devuelveCorredores()
+    let listaCorredores = document.getElementById(idElemento);
+    let totalCorredores = sistema.devuelveCorredores();
     listaCorredores.innerHTML = '';
     for (const corredor of totalCorredores) {
-        let resultado =  `${corredor.nombre} - ${corredor.cedula}`
+        let resultado =  `${corredor.nombre} - ${corredor.cedula}`;
         let value = corredor.cedula;
-        let nodoOptionCorredor = document.createElement('option')
+        let nodoOptionCorredor = document.createElement('option');
         nodoOptionCorredor.value = value;
-        let nodoTextoCorredor = document.createTextNode(resultado)
-        nodoOptionCorredor.appendChild(nodoTextoCorredor)
-        listaCorredores.appendChild(nodoOptionCorredor)
+        let nodoTextoCorredor = document.createTextNode(resultado);
+        nodoOptionCorredor.appendChild(nodoTextoCorredor);
+        listaCorredores.appendChild(nodoOptionCorredor);
     }
 }
 
 
 function inscribirCorredor() {
-    let cedulaCorredor = document.getElementById('corredoresInscripcion').value
-    let nombreCarrera = document.getElementById('carrerasInscripcion').value
-    let corredor = sistema.buscarDatoInscripcion('Corredores',cedulaCorredor)
-    let carrera = sistema.buscarDatoInscripcion('Carrera',nombreCarrera)
+    let cedulaCorredor = document.getElementById('corredoresInscripcion').value;
+    let nombreCarrera = document.getElementById('carrerasInscripcion').value;
+    let corredor = sistema.buscarDatoInscripcion('Corredores',cedulaCorredor);
+    let carrera = sistema.buscarDatoInscripcion('Carrera',nombreCarrera);
     if (corredor.vencFichaMedica < carrera.fecha) {
-        alert('Inscripcion no es posible, la ficha medica vencio')    
+        alert('Inscripcion no es posible, la ficha medica vencio')    ;
     }else{
         if (carrera.cupo === 0) {
-            alert('Inscripcion no es posible, no hay cupos en la carrera')
-        }else{
-            
-            let nuevaInscripcion = new Inscripcion(corredor,carrera)
-            sistema.agregarInscripcion(nuevaInscripcion);   
-            //Se descarga PDF
-            //Falta la logica para asignarle un numero al corredor.
-            
+            alert('Inscripcion no es posible, no hay cupos en la carrera');
+        }else{       
+            let nuevaInscripcion = new Inscripcion(corredor,carrera);
+            sistema.agregarInscripcion(nuevaInscripcion); 
+            //Se descarga PDF        
         }
     }
 }
@@ -185,7 +179,6 @@ function despliegue(boton) {
         }
     }
 }
-
 function insertarDatosGenerales() {
     const promedioInscripciones = sistema.promInscripcionesPorCarrera();
     const carreraMasInscriptos = sistema.CarreraConMas();
@@ -207,7 +200,7 @@ function insertarDatosGenerales() {
     }
     // Insertar carreras sin inscriptos
     if(carreraSinInscriptos.length > 0){
-        let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos')
+        let carreraSinInscriptosList = document.getElementById('carrerasSinInscriptos');
         carreraSinInscriptosList.innerHTML="";
         carreraSinInscriptos.forEach(i => {
             const li=document.createElement("li");
@@ -217,49 +210,49 @@ function insertarDatosGenerales() {
     }
     // Insertar porcentaje de elite.
     if (porcentajeElite != 0) {
-        let parrafCorredoresElite = document.getElementById('parrafCorredoresElite')
+        let parrafCorredoresElite = document.getElementById('parrafCorredoresElite');
         parrafCorredoresElite.textContent = `Promedio de corredores de élite: ${porcentajeElite}%`;      
     }
 }
 
 function cargarDatosTabla(){
-    let carreraBloqueSelect = document.getElementById('carreraConsultaInscriptos')
+    let carreraBloqueSelect = document.getElementById('carreraConsultaInscriptos');
 
     //Carrera para pedir al metodo
     const carreraSeleccionada = carreraBloqueSelect.value;
     //Orden para pedir al metodo
     let ordenSeleccionado = document.querySelector('input[name="ordenInscriptos"]:checked').value;
   
-    let corredoresOrdenados = sistema.devuelveCorredoresEnCarrera(carreraSeleccionada,ordenSeleccionado)
+    let corredoresOrdenados = sistema.devuelveCorredoresEnCarrera(carreraSeleccionada,ordenSeleccionado);
 
     //Agregar corredor a tabla.
 
-    let tablaInscriptos = document.getElementById('tablaInscriptosBody')
+    let tablaInscriptos = document.getElementById('tablaInscriptosBody');
     tablaInscriptos.innerHTML="";
     corredoresOrdenados.forEach(corredor => {
-        tablaFilaCorredor = document.createElement('tr')
+        tablaFilaCorredor = document.createElement('tr');
 
-        let elemTD1 = document.createElement('td')
+        let elemTD1 = document.createElement('td');
         elemTD1.textContent = corredor.nombre;
-        tablaInscriptos.appendChild(elemTD1)
+        tablaInscriptos.appendChild(elemTD1);
 
-        let elemTD2 = document.createElement('td')
+        let elemTD2 = document.createElement('td');
         elemTD2.textContent = corredor.edad;
-        tablaInscriptos.appendChild(elemTD2)
+        tablaInscriptos.appendChild(elemTD2);
 
-        let elemTD3 = document.createElement('td')
+        let elemTD3 = document.createElement('td');
         elemTD3.textContent = corredor.cedula;
-        tablaInscriptos.appendChild(elemTD3)
+        tablaInscriptos.appendChild(elemTD3);
 
-        let elemTD4 = document.createElement('td')
+        let elemTD4 = document.createElement('td');
         elemTD4.textContent = corredor.vencFichaMedica;
-        tablaInscriptos.appendChild(elemTD4)
+        tablaInscriptos.appendChild(elemTD4);
 
-        let elemTD5 = document.createElement('td')
+        let elemTD5 = document.createElement('td');
         elemTD5.textContent = corredor.numero;
-        tablaInscriptos.appendChild(elemTD5)
+        tablaInscriptos.appendChild(elemTD5);
            
-        tablaInscriptos.appendChild(tablaFilaCorredor)
+        tablaInscriptos.appendChild(tablaFilaCorredor);
     });
 
 }
