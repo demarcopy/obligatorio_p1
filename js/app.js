@@ -45,7 +45,8 @@ let sistema = new Sistema();
 function agregarCarrera() {
     let formCarrera = document.getElementById('formcarrera')
     let nombre = document.getElementById('nombreCarrera').value
-    let departamento = document.getElementById('departamentoCarrera').value
+    let departamentoElem = document.getElementById('departamentoCarrera')
+    let departamento = departamentoElem.options[departamentoElem.selectedIndex].text;
     let fecha = document.getElementById('carreraDateForm').value
     let cupo = parseInt(document.getElementById('cupoFormCarrera').value)
 
@@ -270,7 +271,6 @@ google.charts.load('current', {
 });
 
 let estadisticaMapa = document.querySelector('input[name="mapaOrden"]:checked').value;
-console.log(estadisticaMapa)
 
 if (estadisticaMapa === 'carrera') {
     google.charts.setOnLoadCallback(cargarCarreras); 
@@ -278,8 +278,8 @@ if (estadisticaMapa === 'carrera') {
     google.charts.setOnLoadCallback(cargarInscripciones);
 }
 
-sistema.carrerasPorDepartamento;
-sistema.inscripcionesPorDepartamento;
+let carrerasPorDepartamento = sistema.carrerasPorDepartamento();
+let inscripcionesPorDepartamento = sistema.inscripcionesPorDepartamento();
 
 function dibujarMapa(datos) {
     const data = google.visualization.arrayToDataTable(datos);
@@ -295,22 +295,10 @@ function dibujarMapa(datos) {
     chart.draw(data, options);
   }
 function cargarCarreras() {
-    const datosCarreras = [
-      ['Departamento', 'Carreras'],
-      ['Montevideo', 5],
-      ['Canelones', 3],
-      ['Maldonado', 2]
-    ];
-    dibujarMapa(datosCarreras);
+    dibujarMapa(carrerasPorDepartamento);
   }
   
   function cargarInscripciones() {
-    const datosInscripciones = [
-      ['Departamento', 'Inscripciones'],
-      ['Montevideo', 120],
-      ['Canelones', 85],
-      ['Maldonado', 40]
-    ];
-    dibujarMapa(datosInscripciones);
+    dibujarMapa(inscripcionesPorDepartamento);
   }    
 }

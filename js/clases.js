@@ -198,23 +198,57 @@ class Sistema {
     return corredoresEnCarrera
     }
     carrerasPorDepartamento(){ 
-        const listaDepartamentos = []; 
-        const listaCanCarreras = [];
-        const resultado = [];
-        // Itera todas las inscripciones
-        for (let i = 0; i < 20; i++) {
-            listaCanCarreras.push(0);
-            let nombreDepartamento = this.listaCarreras.departamento;
-            listaDepartamentos.push(nombreDepartamento);
-            for (elemento of this.listaCarreras) {
-                if(elemento.departamento===nombreDepartamento) {
-                    listaCanCarreras[i]++;
-                }
+        let listaDepartamentos = []; 
+        let listaConCarreras = [];
+        let resultado = [['Departamento', 'Carreras']];
+        // Itera todas las carreras
+        for (let i = 0; i < this.listaCarreras.length; i++) {
+            let departamentoCarrera = this.listaCarreras[i].departamento;
+            let indexDepartamentoEnLista = listaDepartamentos.indexOf(departamentoCarrera);
+            if (indexDepartamentoEnLista === -1) {
+                listaDepartamentos.push(departamentoCarrera);
             }
         }
+        for (let j = 0; j < listaDepartamentos.length; j++) {
+            listaConCarreras[j] = 0;
+            for (let ind = 0; ind < this.listaCarreras.length; ind++) {
+                
+                if (listaDepartamentos[j] === this.listaCarreras[ind].departamento) {
+                    listaConCarreras[j]++;
+                }                 
+            }
+        }
+        
+        for (let index = 0; index < listaDepartamentos.length; index++) {
+            resultado.push([listaDepartamentos[index], listaConCarreras[index]]);
+        }
+        return resultado;
     }
     inscripcionesPorDepartamento(){
-        console.log('WIP')
+        let listaDepartamentos = []; 
+        let listaConInscripciones = [];
+        let resultado = [['Departamento', 'Inscripciones']];
+        // Itera todas las inscripciones
+        for (let i = 0; i < this.listaInscripciones.length; i++) {
+            let departamentoInscripcion = this.listaInscripciones[i].carrera.departamento;
+            let indexDepartamentoEnLista = listaDepartamentos.indexOf(departamentoInscripcion);
+            if (indexDepartamentoEnLista === -1) {
+                listaDepartamentos.push(departamentoInscripcion);
+            }
+        }
+        for (let j = 0; j < listaDepartamentos.length; j++) {
+            listaConInscripciones[j] = 0;
+            for (let ind = 0; ind < this.listaInscripciones.length; ind++) {
+                
+                if (listaDepartamentos[j] === this.listaInscripciones[ind].carrera.departamento) {
+                    listaConInscripciones[j]++;
+                }                 
+            }
+        }       
+        for (let index = 0; index < listaDepartamentos.length; index++) {
+            resultado.push([listaDepartamentos[index], listaConInscripciones[index]]);
+        }
+        return resultado;
     }
 }
     
