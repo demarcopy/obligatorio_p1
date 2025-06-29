@@ -122,8 +122,9 @@ class Sistema {
         //Evalua si la carrera en el indice actual existe en array auxiliar, si no esta lo pushea
         const index = auxArray.indexOf(nombreCarrera);
         if (index === -1) {
-            auxArray.push(nombreCarrera); 
+            auxArray.push(this.listaInscripciones[i].carrera); 
             cantInscriptosArray.push(1); 
+            console.log(auxArray)
             //Si la carrera ya esta en array auxiliar incrementa la cantidad de inscriptos por el indice de la carrera.
         } else {
             cantInscriptosArray[index]++;
@@ -139,7 +140,9 @@ class Sistema {
     //Sabiendo el maximo evaluamos aquellos que estan en el max de inscriptos para pushearlo al array de resultado.
     cantInscriptosArray.forEach((cantidad, i) => {
         if (cantidad === maximo) {
-            carrerasMasInscriptos.push( `${auxArray[i]} Cantidad de inscriptos: ${maximo}`);
+            let fecha = auxArray[i].fecha
+            let fechaFormateada = fecha.toLocaleDateString('es-UY');
+            carrerasMasInscriptos.push(`${auxArray[i].nombre} en ${auxArray[i].departamento} el ${fechaFormateada} Inscriptos: ${maximo}`);
         }
     });
     return carrerasMasInscriptos
