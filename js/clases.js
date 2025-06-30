@@ -89,16 +89,15 @@ class Sistema {
             //Aca se valida si la carrera a Inscribirse ya tiene por lo menos una inscripcion.
             if (this.listaInscripciones.some(inscripcionIngresada => inscripcionIngresada.carrera.nombre === nuevaInscripcion.carrera.nombre)) {
                 let max = 0
-                for (const inscripcion of this.listaInscripciones) {
-                    if (inscripcion.corredor.numero > max ) {
-                        max = inscripcion.corredor.numero
+                for (let inscripcion of this.listaInscripciones ) {
+                    if (inscripcion.numero > max && inscripcion.carrera.nombre === nuevaInscripcion.carrera.nombre) {
+                        max = inscripcion.numero
                     }
                 }
-                
-                nuevaInscripcion.corredor.numero = max+1
+                nuevaInscripcion.numero = max + 1
                 
             }else{
-                nuevaInscripcion.corredor.numero = 1
+                nuevaInscripcion.numero = 1
             }       
             this.listaInscripciones.push(nuevaInscripcion);
             this.bajarCupo(nuevaInscripcion.carrera.nombre);
@@ -191,15 +190,20 @@ class Sistema {
     } 
     devuelveCorredoresEnCarrera(carrera,ordenamiento){
     let corredoresEnCarrera = [];
+
     for (const inscripcion of this.listaInscripciones) {
+
         if (inscripcion.carrera.nombre === carrera) {
-            corredoresEnCarrera.push(inscripcion.corredor)  
+            corredoresEnCarrera.push({
+                corredor: inscripcion.corredor,
+                numero: inscripcion.numero
+            }); 
         }      
     }
         if (ordenamiento == 'nombre') {
-            corredoresEnCarrera.sort((a,b) => { return a.nombre.localeCompare(b.nombre)})
+            corredoresEnCarrera.sort((a,b) => { return a.corredor.nombre.localeCompare(b.corredor.nombre)})
         }else{
-            corredoresEnCarrera.sort((a,b) => { return a - b})
+            corredoresEnCarrera.sort((a,b) => { return a.numero - b.numero})
         }
     return corredoresEnCarrera
     }
@@ -293,9 +297,10 @@ class Corredor{
 }
 
 class Inscripcion{
-    constructor(corredor,carrera){
+    constructor(corredor,carrera,numero){
         this.corredor = corredor;
         this.carrera = carrera;
+        this.numero = numero
     }
 }
 

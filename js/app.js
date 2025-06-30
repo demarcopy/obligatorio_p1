@@ -147,13 +147,14 @@ function inscribirCorredor() {
     let nombreCarrera = document.getElementById('carrerasInscripcion').value;
     let corredor = sistema.buscarDatoInscripcion('Corredores',cedulaCorredor);
     let carrera = sistema.buscarDatoInscripcion('Carrera',nombreCarrera);
+    let numero = 0;
     if (corredor.vencFichaMedica < carrera.fecha) {
         alert('Inscripcion no es posible, la ficha medica debe vencer despues de la carrera.');
     }else{
         if (carrera.cupo === 0) {
             alert('Inscripcion no es posible, no hay cupos en la carrera');
         }else{       
-            let nuevaInscripcion = new Inscripcion(corredor,carrera);
+            let nuevaInscripcion = new Inscripcion(corredor,carrera,numero);
             sistema.agregarInscripcion(nuevaInscripcion); 
         }
     }
@@ -187,7 +188,6 @@ function insertarDatosGenerales() {
     if (carreraMasInscriptos.length > 0) {
         const ListaConMas = document.getElementById('listaCarrerasInscriptos');
         ListaConMas.innerHTML = "";
-        console.log(carreraMasInscriptos);
         carreraMasInscriptos.forEach(i => {
             const li=document.createElement("li");
             li.textContent=i;
@@ -226,19 +226,19 @@ function cargarDatosTabla(){
 
     let tablaInscriptos = document.getElementById('tablaInscriptosBody');
     tablaInscriptos.innerHTML="";
-    corredoresOrdenados.forEach(corredor => {
+    corredoresOrdenados.forEach(inscripcion => {
         tablaFilaCorredor = document.createElement('tr');
-        let fechaMedicaFormat = corredor.vencFichaMedica.toLocaleDateString('es-UY');
+        let fechaMedicaFormat = inscripcion.corredor.vencFichaMedica.toLocaleDateString('es-UY');
         let elemTD1 = document.createElement('td');
-        elemTD1.textContent = corredor.nombre;
+        elemTD1.textContent = inscripcion.corredor.nombre;
         tablaFilaCorredor.appendChild(elemTD1);
 
         let elemTD2 = document.createElement('td');
-        elemTD2.textContent = corredor.edad;
+        elemTD2.textContent = inscripcion.corredor.edad;
         tablaFilaCorredor.appendChild(elemTD2);
 
         let elemTD3 = document.createElement('td');
-        elemTD3.textContent = corredor.cedula;
+        elemTD3.textContent = inscripcion.corredor.cedula;
         tablaFilaCorredor.appendChild(elemTD3);
 
         let elemTD4 = document.createElement('td');
@@ -246,12 +246,11 @@ function cargarDatosTabla(){
         tablaFilaCorredor.appendChild(elemTD4);
 
         let elemTD5 = document.createElement('td');
-        elemTD5.textContent = corredor.numero;
+        elemTD5.textContent = inscripcion.numero;
         tablaFilaCorredor.appendChild(elemTD5);
 
-        if(corredor.tipo==="Deportista Elite") {
-            tablaFilaCorredor.classList.add('claseElite');
-            
+        if(inscripcion.corredor.tipo==="Deportista Elite") {
+            tablaFilaCorredor.classList.add('claseElite');     
         }
 
            
@@ -306,7 +305,7 @@ function descargarInscripcion(nuevaInscripcion) {
     //Corredor
     let fechaMedicaFormateada = nuevaInscripcion.corredor.vencFichaMedica.toLocaleDateString('es-UY');
 
-    pdf.text(`Numero de corredor ${nuevaInscripcion.corredor.numero}`, 10, 10);
+    pdf.text(`Numero de corredor ${nuevaInscripcion.numero}`, 10, 10);
     pdf.text(`Nombre del corredor: ${nuevaInscripcion.corredor.nombre}`, 10, 20);
     pdf.text(`${nuevaInscripcion.corredor.tipo}`, 10, 30);
     pdf.text(`${fechaMedicaFormateada}`, 10, 40);
@@ -328,7 +327,7 @@ function descargarInscripcion(nuevaInscripcion) {
     pdf.save("comprobante-inscripcion.pdf");
     
     alert(`¡Inscripción exitosa!
-     Numero: ${nuevaInscripcion.corredor.numero}
+     Numero: ${nuevaInscripcion.numero}
      Nombre: ${nuevaInscripcion.corredor.nombre}
      ${nuevaInscripcion.corredor.tipo}
      Ficha medica: ${fechaMedicaFormateada}
