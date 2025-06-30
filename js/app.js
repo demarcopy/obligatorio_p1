@@ -8,7 +8,6 @@ function inicio() {
     document.getElementById('formpatrocinadores').addEventListener('submit',function (e){
         e.preventDefault();
         agregarPatrocinador();
-        sistema.CarreraConMas();
     });
     document.getElementById('formcorredores').addEventListener('submit',function (e){
         e.preventDefault();
@@ -189,6 +188,7 @@ function insertarDatosGenerales() {
     if (carreraMasInscriptos.length > 0) {
         const ListaConMas = document.getElementById('listaCarrerasInscriptos');
         ListaConMas.innerHTML = "";
+        console.log(carreraMasInscriptos);
         carreraMasInscriptos.forEach(i => {
             const li=document.createElement("li");
             li.textContent=i;

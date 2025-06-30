@@ -94,7 +94,9 @@ class Sistema {
                         max = inscripcion.corredor.numero
                     }
                 }
+                
                 nuevaInscripcion.corredor.numero = max+1
+                
             }else{
                 nuevaInscripcion.corredor.numero = 1
             }       
@@ -119,7 +121,7 @@ class Sistema {
     const carrerasMasInscriptos = [];
     // Itera todas las inscripciones
     for (let i = 0; i < this.listaInscripciones.length; i++) {
-        const nombreCarrera = this.listaInscripciones[i].carrera.nombre;
+        const nombreCarrera = this.listaInscripciones[i].carrera;
         //Evalua si la carrera en el indice actual existe en array auxiliar, si no esta lo pushea
         const index = auxArray.indexOf(nombreCarrera);
         if (index === -1) {
