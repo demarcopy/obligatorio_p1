@@ -142,7 +142,6 @@ function corredorEnLista(idElemento) {
     }
 }
 
-
 function inscribirCorredor() {
     let cedulaCorredor = document.getElementById('corredoresInscripcion').value;
     let nombreCarrera = document.getElementById('carrerasInscripcion').value;
@@ -221,6 +220,7 @@ function cargarDatosTabla(){
     let ordenSeleccionado = document.querySelector('input[name="ordenInscriptos"]:checked').value;
   
     let corredoresOrdenados = sistema.devuelveCorredoresEnCarrera(carreraSeleccionada,ordenSeleccionado);
+    
 
     //Agregar corredor a tabla.
 
@@ -228,7 +228,7 @@ function cargarDatosTabla(){
     tablaInscriptos.innerHTML="";
     corredoresOrdenados.forEach(corredor => {
         tablaFilaCorredor = document.createElement('tr');
-
+        let fechaMedicaFormat = corredor.vencFichaMedica.toLocaleDateString('es-UY');
         let elemTD1 = document.createElement('td');
         elemTD1.textContent = corredor.nombre;
         tablaFilaCorredor.appendChild(elemTD1);
@@ -242,7 +242,7 @@ function cargarDatosTabla(){
         tablaFilaCorredor.appendChild(elemTD3);
 
         let elemTD4 = document.createElement('td');
-        elemTD4.textContent = corredor.vencFichaMedica;
+        elemTD4.textContent = fechaMedicaFormat;
         tablaFilaCorredor.appendChild(elemTD4);
 
         let elemTD5 = document.createElement('td');
