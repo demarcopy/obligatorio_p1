@@ -1,3 +1,4 @@
+//Autores: Rodrigo Demarco, Nro 354653 - Bruno Dorta Nro 367324
 class Sistema {
     constructor(){
         this.listaCarreras = new Array();
@@ -276,7 +277,7 @@ class Corredor{
         this.nombre = nombre;
         this.edad = edad;
         this.cedula = cedula;
-        this.vencFichaMedica = vencFichaMedica;
+        this.vencFichaMedica = new Date(vencFichaMedica);
         this.tipo = tipo;
     }
 }

@@ -1,3 +1,4 @@
+//Autores: Rodrigo Demarco, Nro 354653 - Bruno Dorta Nro 367324
 window.addEventListener('load', inicio);
 function inicio() {
     document.getElementById('formcarrera').addEventListener('submit',function (e){
@@ -52,10 +53,8 @@ function agregarCarrera() {
     let cupoInicial = cupo
 
     let nuevaCarrera = new Carrera(nombre,departamento,fecha,cupo,cupoInicial)
-    //Diria de validar tambien que la fecha sea mayor a la actual.
     
     if (formCarrera.checkValidity()) {
-        
         if (sistema.carreraYaExiste(nuevaCarrera.nombre)) {
             alert('La carrera ya fue ingresada')
         }else{
@@ -93,10 +92,9 @@ function agregarPatrocinador() {
     
     if (formpatrocinadores.reportValidity()) {
         if (sistema.patrocinadorYaExiste(nuevoPatrocinador.nombre)) {
-            alert('Patrocinador ya existe - Se actualizan datos');
             sistema.actualizarPatrocinador(nuevoPatrocinador);
             formpatrocinadores.reset();
-            alert('Patrocinador actualizado');
+            alert('Patrocinador ya existe. Se actualizan datos');            
         }else{      
             sistema.agregarPatrocinador(nuevoPatrocinador);
             formpatrocinadores.reset();
@@ -152,7 +150,7 @@ function inscribirCorredor() {
     let corredor = sistema.buscarDatoInscripcion('Corredores',cedulaCorredor);
     let carrera = sistema.buscarDatoInscripcion('Carrera',nombreCarrera);
     if (corredor.vencFichaMedica < carrera.fecha) {
-        alert('Inscripcion no es posible, la ficha medica vencio')    ;
+        alert('Inscripcion no es posible, la ficha medica debe vencer despues de la carrera.');
     }else{
         if (carrera.cupo === 0) {
             alert('Inscripcion no es posible, no hay cupos en la carrera');
@@ -304,17 +302,33 @@ function cargarCarreras() {
 
 function descargarInscripcion(nuevaInscripcion) {
     const { jsPDF } = window.jspdf;
-    // Generar PDF
     const pdf = new jsPDF();
+
+    //Corredor
+    let fechaMedicaFormateada = nuevaInscripcion.corredor.vencFichaMedica.toLocaleDateString('es-UY');
+
     pdf.text(`Numero de corredor ${nuevaInscripcion.corredor.numero}`, 10, 10);
     pdf.text(`Nombre del corredor: ${nuevaInscripcion.corredor.nombre}`, 10, 20);
     pdf.text(`${nuevaInscripcion.corredor.tipo}`, 10, 30);
+    pdf.text(`${fechaMedicaFormateada}`, 10, 40);
+
+    //Carrera
     let fechaFormateada = nuevaInscripcion.carrera.fecha.toLocaleDateString('es-UY');
-    pdf.text(`Carrera ${nuevaInscripcion.carrera.nombre} en ${nuevaInscripcion.carrera.departamento} el ${fechaFormateada} ${nuevaInscripcion.carrera.cupoInicial}`, 10, 40);
+    pdf.text(`Carrera ${nuevaInscripcion.carrera.nombre} en ${nuevaInscripcion.carrera.departamento} el ${fechaFormateada} ${nuevaInscripcion.carrera.cupoInicial}`, 10, 60);
+
+    //Patrocinador
     
     // Descargar PDF
     pdf.save("comprobante-inscripcion.pdf");
     
-    // Opcional: Redirigir o mostrar mensaje de éxito
-    alert("¡Inscripción exitosa! Se ha descargado el comprobante.");
+    alert(`¡Inscripción exitosa!
+     Numero: ${nuevaInscripcion.corredor.numero}
+     Nombre: ${nuevaInscripcion.corredor.nombre}
+     ${nuevaInscripcion.corredor.tipo}
+     Ficha medica: ${fechaMedicaFormateada}
+
+     Carrera: ${nuevaInscripcion.carrera.nombre} en ${nuevaInscripcion.carrera.departamento} el ${fechaFormateada} Cupo: ${nuevaInscripcion.carrera.cupoInicial}
+
+     Se descargará un PDF con esta informacion.
+    `);
 }
