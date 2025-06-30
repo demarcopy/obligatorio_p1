@@ -299,7 +299,6 @@ function cargarCarreras() {
   }    
 }
 
-
 function descargarInscripcion(nuevaInscripcion) {
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
@@ -317,7 +316,14 @@ function descargarInscripcion(nuevaInscripcion) {
     pdf.text(`Carrera ${nuevaInscripcion.carrera.nombre} en ${nuevaInscripcion.carrera.departamento} el ${fechaFormateada} ${nuevaInscripcion.carrera.cupoInicial}`, 10, 60);
 
     //Patrocinador
-    
+    let patrocinadorEnCarrera = sistema.buscarPatrocinadoresEnCarrera(nuevaInscripcion.carrera.nombre)
+    let patrocinadoresCarreraDisplay = ``
+    for (const patrocinador of patrocinadorEnCarrera) {
+        patrocinadoresCarreraDisplay = `${patrocinadoresCarreraDisplay} ${patrocinador.nombre} (${patrocinador.rubro})     `
+    }
+
+    pdf.text(`Patrocinador/es: ${patrocinadoresCarreraDisplay}`, 10, 80);
+
     // Descargar PDF
     pdf.save("comprobante-inscripcion.pdf");
     
@@ -328,6 +334,8 @@ function descargarInscripcion(nuevaInscripcion) {
      Ficha medica: ${fechaMedicaFormateada}
 
      Carrera: ${nuevaInscripcion.carrera.nombre} en ${nuevaInscripcion.carrera.departamento} el ${fechaFormateada} Cupo: ${nuevaInscripcion.carrera.cupoInicial}
+
+     Patrocinador/es: ${patrocinadoresCarreraDisplay}
 
      Se descargará un PDF con esta informacion.
     `);

@@ -254,11 +254,19 @@ class Sistema {
         }
         return resultado;
     }
+    buscarPatrocinadoresEnCarrera(carrera){
+        let carreraBuscar = carrera;
+        let patrocinadoresCarrera = []
+        for (let i = 0; i < this.listaPatrocinadores.length; i++) {
+            let carreraPatrocinador = this.listaPatrocinadores[i].carrera
+            if (carreraPatrocinador.includes(carreraBuscar)) {
+                patrocinadoresCarrera.push(this.listaPatrocinadores[i])
+            }  
+        }
+        return patrocinadoresCarrera
+    }
 }
     
-
-
-
 class Carrera {
     constructor(nombre,departamento,fecha,cupo,cupoInicial){
         this.nombre = nombre; 
