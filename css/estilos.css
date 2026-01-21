@@ -1,47 +1,168 @@
-/* Autores: Rodrigo Demarco, Nro 354653 - Bruno Dorta Nro 367324 */
-h1 {
-    color: rgb(0, 0, 0);
+
+* {
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
-article{
-background-color: #00FF84;
-padding: 10px;
-border-radius: 10px;
-margin: 5px;
+
+body {
+    margin: 0;
+    background-color: #f2f4f7;
+    color: #333;
 }
-#ordenarInscriptos{
-      display: flex;
-      align-items:center;
-}
-#ordenarInscriptosOpciones  {
-    margin-left: 10px;
-}
-footer {
-   background-color: antiquewhite; 
-   border-radius: 10px; 
-}
-section {
-    background-color: rgb(150, 224, 150);
-    background-size: 50% 40%;
-    padding: 1%;
-    border-radius: 10px;
-}
+
+
 header {
     text-align: center;
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    color: white;
+    padding: 20px;
 }
-#tablaInscriptos, #tablaInscriptos th, #tablaInscriptos td {
-  border: 1px solid black;
-  border-collapse: collapse;
+
+header img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
 }
+
+h1 {
+    margin: 0;
+}
+
+
+button {
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #16a085;
+}
+
+
+section {
+    background-color: #e8f6f3;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+}
+
 #secEstadisticas {
     display: none;
 }
+
 #secDatos {
     display: block;
 }
-.claseElite {
-    background-color: red;
+
+
+article {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-#carreraConsultaInscriptos {
-    padding: 1px 8px;
-     border-radius: 5px;
+
+article h4 {
+    margin-top: 0;
+    color: #16a085;
+}
+
+
+form div {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #1abc9c;
+}
+
+form input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+
+#ordenarInscriptos {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#ordenarInscriptosOpciones label {
+    margin-right: 10px;
+}
+
+
+#tablaInscriptos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#tablaInscriptos caption {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#tablaInscriptos th {
+    background-color: #1abc9c;
+    color: white;
+    padding: 8px;
+}
+
+#tablaInscriptos td {
+    padding: 8px;
+    text-align: center;
+}
+
+#tablaInscriptos tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.claseElite {
+    background-color: #ff6b6b;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+}
+
+footer a {
+    color: #1abc9c;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
